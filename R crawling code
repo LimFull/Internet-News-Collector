@@ -1,7 +1,9 @@
 // 네이버뉴스 IT카테고리 첫 페이지 크롤링 예시
-// rvest 패키지 필요
-// dplyr 패키지 필요
-// 리눅스에서 rvest 패키지 설치 오류 발생할 경우 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
+// rvest 패키지 필요 : install.packages("rvest")
+//                    library(rvest)
+// dplyr 패키지 필요 : install.packages("dplyr")
+                      library(dplyr)
+// 리눅스에서 rvest 패키지 설치 오류 발생할 경우 터미널에 다음 명령 입력 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
 
 > naver_url <- 'http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105#&date=%2000:00:00&page=1'
 > html <- read_html(naver_url)
