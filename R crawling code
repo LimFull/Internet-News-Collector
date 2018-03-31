@@ -1,0 +1,44 @@
+> naver_url <- 'http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105#&date=%2000:00:00&page=1'
+> html <- read_html(naver_url)
+> temp <- unique(html_nodes(html,'#main_content')%>%
++                    html_nodes(css='.list_body')%>%
++                    html_nodes(css='.section_headline')%>%
++                    html_nodes('a')%>%
++                    html_attr('href'))
+> temp
+ [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995332"
+ [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=052&aid=0001130687"
+ [3] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=005&aid=0001085058"
+ [4] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994508"
+ [5] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=022&aid=0003261918"
+ [6] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995397"
+ [7] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994887"
+ [8] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=449&aid=0000149865"
+ [9] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994949"
+[10] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995000"
+[11] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=018&aid=0004068286"
+
+> news_url <-c()
+> news_url <- c(news_url,temp)
+> news_url 
+ [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995332"
+ [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=052&aid=0001130687"
+ [3] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=005&aid=0001085058"
+ [4] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994508"
+ [5] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=022&aid=0003261918"
+ [6] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995397"
+ [7] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994887"
+ [8] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=449&aid=0000149865"
+ [9] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994949"
+[10] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995000"
+[11] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=018&aid=0004068286"
+
+> news_content <- c()
+> for (i in 1:length(news_url)){
++     html <- read_html(news_url[i])
++     temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
++     news_content <- c(news_content,temp)
++ }
+> news <- cbind(url=news_url,content=unlist(news_content))
+> news <- as.data.frame(news)
+> news
