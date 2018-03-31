@@ -2,7 +2,7 @@
 // rvest 패키지 필요 : install.packages("rvest")
 //                    library(rvest)
 // dplyr 패키지 필요 : install.packages("dplyr")
-                      library(dplyr)
+//                    library(dplyr)
 // 리눅스에서 rvest 패키지 설치 오류 발생할 경우 터미널에 다음 명령 입력 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
 
 > naver_url <- 'http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105#&date=%2000:00:00&page=1'
