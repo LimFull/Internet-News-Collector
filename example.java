@@ -13,7 +13,7 @@ public class example {
 			return;
 		}
 		
-		REXP a =re.eval("a <- 10", true);
+		REXP a =re.eval("a <- 10", true);  //R 명령어 사용
 		System.out.println(a.asDouble());  //자바에서 사용할 수 있는 형식으로 변환하는 과정
 	}
 
