@@ -1,5 +1,5 @@
-// https://github.com/mrchypark/naverNewsParser
-// This source is Mychypark 's naverNEwsParser
+# https://github.com/mrchypark/naverNewsParser
+# This source is Mychypark 's naverNEwsParser
 
 
 getNaverNews <- function()
