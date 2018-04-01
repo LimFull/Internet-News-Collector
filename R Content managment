@@ -1,6 +1,6 @@
-// KoNLP 패키지 필요
-// tm 패키지 필요
-// news_content에 뉴스 내용이 들어있어야 함 (crawling code 참조)
+# KoNLP 패키지 필요
+# tm 패키지 필요
+# news_content에 뉴스 내용이 들어있어야 함 (crawling code 참조)
 
 > doc <- Corpus(VectorSource(news_content))
 >
