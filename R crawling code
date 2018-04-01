@@ -6,40 +6,56 @@
 // 리눅스에서 rvest 패키지 설치 오류 발생할 경우 터미널에 다음 명령 입력 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
 // rvest install 중 xml2 error -> sudo apt-get install libxml2 libxml2-dev
 
-> naver_url <- 'http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105#&date=%2000:00:00&page=1'
+> naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105&date=20180401&page=1'
 > html <- read_html(naver_url)
-> temp <- unique(html_nodes(html,'#main_content')%>%
-+                    html_nodes(css='.list_body')%>%
-+                    html_nodes(css='.section_headline')%>%
-+                    html_nodes('a')%>%
-+                    html_attr('href'))
+> temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
++                html_attr('href')),unique(html_nodes(html,"#main_content .list_body .type06 a")%>%
++                html_attr('href')))
 > temp
- [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995332"
- [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=052&aid=0001130687"
- [3] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=005&aid=0001085058"
- [4] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994508"
- [5] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=022&aid=0003261918"
- [6] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995397"
- [7] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994887"
- [8] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=449&aid=0000149865"
- [9] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994949"
-[10] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995000"
-[11] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=018&aid=0004068286"
+ [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695557"
+ [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=028&aid=0002404486"
+ [3] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695556"
+ [4] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=092&aid=0002134402"
+ [5] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695555"
+ [6] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695554"
+ [7] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=138&aid=0002060555"
+ [8] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=277&aid=0004208490"
+ [9] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695553"
+[10] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=029&aid=0002456065"
+[11] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695552"
+[12] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=092&aid=0002134401"
+[13] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=028&aid=0002404482"
+[14] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695551"
+[15] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=011&aid=0003258595"
+[16] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695550"
+[17] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=092&aid=0002134400"
+[18] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=031&aid=0000442431"
+[19] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=031&aid=0000442430"
+[20] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=029&aid=0002456058"
 
 > news_url <-c()
 > news_url <- c(news_url,temp)
 > news_url 
- [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995332"
- [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=052&aid=0001130687"
- [3] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=005&aid=0001085058"
- [4] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994508"
- [5] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=022&aid=0003261918"
- [6] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995397"
- [7] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994887"
- [8] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=449&aid=0000149865"
- [9] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009994949"
-[10] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995000"
-[11] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=018&aid=0004068286"
+ [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695557"
+ [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=028&aid=0002404486"
+ [3] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695556"
+ [4] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=092&aid=0002134402"
+ [5] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695555"
+ [6] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695554"
+ [7] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=138&aid=0002060555"
+ [8] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=277&aid=0004208490"
+ [9] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695553"
+[10] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=029&aid=0002456065"
+[11] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695552"
+[12] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=092&aid=0002134401"
+[13] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=028&aid=0002404482"
+[14] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695551"
+[15] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=011&aid=0003258595"
+[16] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=030&aid=0002695550"
+[17] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=092&aid=0002134400"
+[18] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=031&aid=0000442431"
+[19] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=031&aid=0000442430"
+[20] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=029&aid=0002456058"
 
 > news_content <- c()
 > for (i in 1:length(news_url)){
