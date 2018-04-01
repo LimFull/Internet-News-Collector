@@ -8,11 +8,8 @@
 
 > naver_url <- 'http://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105#&date=%2000:00:00&page=1'
 > html <- read_html(naver_url)
-> temp <- unique(html_nodes(html,'#main_content')%>%
-+                    html_nodes(css='.list_body')%>%
-+                    html_nodes(css='.section_headline')%>%
-+                    html_nodes('a')%>%
-+                    html_attr('href'))
+> temp <- unique(html_nodes(html,"#main_content .list_body .section_headline a")%>%
++                html_attr('href'))
 > temp
  [1] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=001&aid=0009995332"
  [2] "http://news.naver.com/main/read.nhn?mode=LSD&mid=shm&sid1=105&oid=052&aid=0001130687"
