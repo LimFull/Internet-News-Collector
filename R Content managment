@@ -12,7 +12,7 @@
 > tdm <- TermDocumentMatrix(doc,control=list(tokenize=words))
 > tdm2 <- as.matrix(tdm)
 > tdm3 <- rowSums(tdm2)
-> tdm4 <- tdm3[roder(tdm3, decreasing=T)]
+> tdm4 <- tdm3[order(tdm3, decreasing=T)]
 > as.data.frame(tdm4)
 
 톈궁                                                                                                   53 
