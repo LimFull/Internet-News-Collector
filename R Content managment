@@ -2,6 +2,7 @@
 # tm 패키지 필요
 # news_content에 뉴스 내용이 들어있어야 함 (crawling code 참조)
 
+# 문장의 형태소 분석을 위해 세종사전 불러옴
  useSejongDic()
  doc <- Corpus(VectorSource(news_content))
 
