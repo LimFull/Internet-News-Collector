@@ -49,3 +49,7 @@
 > news <- cbind(url=news_url,content=unlist(news_content))
 > news <- as.data.frame(news)
 > news
+> dir.create("./Rdata",showWarnings = F) 
+# Create Rdata Folder
+> write.csv(news,file=paste0("./Rdata/news",".csv"),row.names = F)
+# Save as csv file
