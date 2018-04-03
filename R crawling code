@@ -67,12 +67,15 @@ library(dplyr)
 [20] "http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=029&aid=0002456058"
 
 > news_content <- c()
+> news_title <- c()
 > for (i in 1:length(news_url)){
 +     html <- read_html(news_url[i])
 +     temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
 +     news_content <- c(news_content,temp)
++ temp <- repair_encoding(html_text(html_nodes(html,'h3#articleTitle')),from = 'utf-8')
++ news_title <- c(news_title,temp)
 + }
-> news <- cbind(url=news_url,content=unlist(news_content))
+>  news <- cbind(url=news_url,title=unlist(news_title),content=unlist(news_content))
 > news <- as.data.frame(news)
 > news
 > dir.create("./Rdata",showWarnings = F) 
