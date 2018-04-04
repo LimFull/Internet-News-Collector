@@ -23,7 +23,7 @@ library(stringr)
 
 
  doc <- Corpus(VectorSource(news_content))
- doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),stopwords=c("flash")))
+ doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(4,Inf),stopwords=c("flash")))
  doc <- as.matrix(doc)
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
@@ -34,32 +34,32 @@ library(stringr)
 #------------------result---------------------
              doc[1:30]
 무궁화          18
-호              18
-일              16
-수              14
 멜론            13
-▶              12
-등              11
 있다            11
 모든            10
-년              10
 위성            10
 추천            10
 그는             9
 기자             9
 위해             9
 통해             9
-및               9
-월               9
 위성을           9
-vip              9
 금지             8
 재배포           8
 abs에            8
-com              7
 등을             7
 블록체인         7
 이더리움         7
 이번             7
 넷마블은         7
 말했다           7
+콘텐츠를         7
+같은             6
+다양한           6
+대한             6
+밝혔다           6
+글로벌           6
+kt와             6
+내렸다           6
+따라             6
+만달러           6
