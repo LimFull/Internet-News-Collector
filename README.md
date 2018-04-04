@@ -42,9 +42,8 @@
  - http://jpub.tistory.com/322 (라즈베리파이 클러스터)
  - 시작하세요! 하둡 프로그래밍 기초부터 실무까지 하둡의 모든 것(위키북스)
  - 빅데이터 통계 분석과 그래픽용 프로그래밍 언어의 대표주자! 오픈소스 R(성안당)
- - Mychypark's naverNEwsParser(https://github.com/mrchypark/naverNewsParser)
- - R과 JAVA 크롤링하자 (생능출판사)
- 
+
+
 
 
 
