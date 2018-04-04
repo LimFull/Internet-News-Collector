@@ -24,7 +24,8 @@ library(stringr)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
- stopwords=c("com","및","을","를","수","일","등을","등","▶")))
+ stopwords=c("com","있다","및","을","를","수","일","등을","등","▶")))
+
  doc <- as.matrix(doc)
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
@@ -37,7 +38,6 @@ library(stringr)
 무궁화          18
 호              18
 멜론            13
-있다            11
 모든            10
 년              10
 위성            10
@@ -64,3 +64,4 @@ abs에            8
 밝혔다           6
 글로벌           6
 kt와             6
+내렸다           6
