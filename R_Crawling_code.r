@@ -18,7 +18,8 @@ library(dplyr)
  naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105'
  html <- read_html(naver_url)
  temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
-                html_attr('href')))
+                html_attr('href')),unique(html_nodes(html,"#main_content .list_body .type06 a")%>%
+                                             html_attr('href')))
  temp
  
 
