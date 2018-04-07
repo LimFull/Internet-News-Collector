@@ -11,6 +11,12 @@ if (!requireNamespace("tm")){
 } 
 library(tm)
 
+# wordcloud 패키지 필요
+if (!requireNamespace("wordcloud")){
+  install.packages("wordcloud")
+} 
+library(wordcloud)
+
 # news_content에 뉴스 내용이 들어있어야 함 (crawling code 참조)
 
 library(stringr)
@@ -20,7 +26,18 @@ library(stringr)
 
 # 불필요한 문장 제거
  news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
- 
+ news_content<-gsub("\t","",news_content)
+ news_content<-gsub("\n","",news_content)
+ news_content<-gsub("\\{\\}","",news_content)
+ news_content<-gsub("\\(\\)","",news_content)
+ news_content<-gsub("사진=","",news_content)
+ news_content<-gsub("기자]","",news_content)
+ news_content<-gsub("기자)","",news_content)
+ news_content<-gsub("지디넷코리아)","",news_content)
+ news_content<-gsub("\\(지디넷코리아","",news_content)
+ news_content<-gsub("▶.+","",news_content)
+ news_content<-gsub("♥.+","",news_content)
+
  
  words <- function(doc){
  doc<- as.character(doc)
@@ -33,12 +50,13 @@ library(stringr)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
- stopwords=c("은","는","이","가","com","있다","및","을","를","수","일","등을","등","▶")))
+                                            stopwords=c("은","는","이","가","com","있다","및","을","를","수","일","등을","등","▶")))
 
  doc <- as.matrix(doc)
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
- as.data.frame(doc[1:30])
+ doc <- as.data.frame(doc[1:30])
+ doc
 
 #워드클라우드 생성
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
