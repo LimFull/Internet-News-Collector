@@ -23,8 +23,6 @@ library(stringr)
  
  
  words <- function(doc){
- #doc<- as.character(doc)
- #extractNoun(doc)
  doc<- as.character(doc)
  doc2<-paste(SimplePos22(doc))
  doc3<-str_match(doc2,"([가-힣]+)/NC")
@@ -35,7 +33,7 @@ library(stringr)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
- stopwords=c("com","있다","및","을","를","수","일","등을","등","▶")))
+ stopwords=c("은","는","이","가","com","있다","및","을","를","수","일","등을","등","▶")))
 
  doc <- as.matrix(doc)
  doc <- rowSums(doc) 
