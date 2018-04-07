@@ -21,3 +21,19 @@ if (!requireNamespace("RColorBrewer")){
 } 
 library(RColorBrewer)
 
+palete <- brewer.pal(9,"Set1")
+x11()
+wordcloud(
+  names(tdm3),
+  freq = tdm4,
+  scale=c(5,1),
+  rot.per = 0.5,
+  min.freq=7,
+  random.order=F,
+  random.color = T,
+  colors=palete
+  
+)
+
+
+#as.data.frame(tdm3)
