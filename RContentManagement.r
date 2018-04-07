@@ -40,6 +40,9 @@ library(stringr)
  doc <- doc[order(doc,decreasing=T)] 
  as.data.frame(doc[1:30])
 
+#워드클라우드 생성
+ wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
+
 
 
 #------------------result---------------------
