@@ -1,5 +1,16 @@
 # KoNLP 패키지 필요
+if (!requireNamespace("KoNLP")){
+  install.packages("KoNLP")
+} 
+library(KoNLP)
+
+
 # tm 패키지 필요
+if (!requireNamespace("tm")){
+  install.packages("tm")
+} 
+library(tm)
+
 # news_content에 뉴스 내용이 들어있어야 함 (crawling code 참조)
 
 library(stringr)
