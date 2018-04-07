@@ -10,3 +10,14 @@ tdm4
 
 
 
+
+if (!requireNamespace("wordcloud")){
+  install.packages("wordcloud")
+} 
+library(wordcloud)
+
+if (!requireNamespace("RColorBrewer")){
+  install.packages("RColorBrewer")
+} 
+library(RColorBrewer)
+
