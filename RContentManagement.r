@@ -24,7 +24,7 @@ library(stringr)
 # 문장의 형태소 분석을 위해 세종사전 불러옴
  useSejongDic()
 
-# 문장을 쪼개기 위한 함수 
+# 문장을 쪼개기 위한 함수 정의
  words <- function(doc){
  doc<- as.character(doc)
  doc2<-paste(SimplePos22(doc))
