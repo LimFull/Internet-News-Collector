@@ -24,6 +24,15 @@ library(stringr)
 # 문장의 형태소 분석을 위해 세종사전 불러옴
  useSejongDic()
 
+# 문장을 쪼개기 위한 함수 
+ words <- function(doc){
+ doc<- as.character(doc)
+ doc2<-paste(SimplePos22(doc))
+ doc3<-str_match(doc2,"([가-힣]+)/NC")
+ doc4<-doc3[,2]
+ doc4[!is.na(doc4)]
+ }
+
 # 불필요한 글자 제거
  news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
  news_content<-gsub("\t","",news_content)
@@ -41,16 +50,6 @@ library(stringr)
  news_content<-gsub("를 "," ",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
-
- 
- words <- function(doc){
- doc<- as.character(doc)
- doc2<-paste(SimplePos22(doc))
- doc3<-str_match(doc2,"([가-힣]+)/NC")
- doc4<-doc3[,2]
- doc4[!is.na(doc4)]
- }
-
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
