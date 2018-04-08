@@ -24,7 +24,7 @@ library(stringr)
 # 문장의 형태소 분석을 위해 세종사전 불러옴
  useSejongDic()
 
-# 불필요한  제거
+# 불필요한 글자 제거
  news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
  news_content<-gsub("\t","",news_content)
  news_content<-gsub("\n","",news_content)
