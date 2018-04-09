@@ -85,7 +85,7 @@ public class IT extends JFrame {
 			}
 		});
 		Press1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		Press1.setBounds(529, 10, 143, 38);
+		Press1.setBounds(529, 16, 143, 38);
 		contentPane.add(Press1);
 		
 		JLabel Press2 = new JLabel("");
