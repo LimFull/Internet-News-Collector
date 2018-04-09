@@ -19,8 +19,12 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Window.Type;
 
 public class IT extends JFrame {
 
@@ -41,6 +45,7 @@ public class IT extends JFrame {
 	 * Create the frame.
 	 */
 	public IT() {
+		setType(Type.POPUP);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 700, 380);
 		contentPane = new JPanel();
@@ -80,7 +85,7 @@ public class IT extends JFrame {
 			}
 		});
 		Press1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		Press1.setBounds(529, 20, 143, 38);
+		Press1.setBounds(529, 10, 143, 38);
 		contentPane.add(Press1);
 		
 		JLabel Press2 = new JLabel("");
@@ -91,7 +96,7 @@ public class IT extends JFrame {
 			}
 		});
 		Press2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		Press2.setBounds(529, 82, 143, 38);
+		Press2.setBounds(529, 64, 143, 38);
 		contentPane.add(Press2);
 		
 		JLabel Press3 = new JLabel("");
@@ -102,7 +107,7 @@ public class IT extends JFrame {
 			}
 		});
 		Press3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		Press3.setBounds(529, 144, 143, 38);
+		Press3.setBounds(529, 112, 143, 38);
 		contentPane.add(Press3);
 		
 		JLabel Press4 = new JLabel("");
@@ -113,7 +118,7 @@ public class IT extends JFrame {
 			}
 		});
 		Press4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		Press4.setBounds(529, 208, 143, 38);
+		Press4.setBounds(529, 160, 143, 38);
 		contentPane.add(Press4);
 		
 		JLabel Press5 = new JLabel("");
@@ -124,8 +129,22 @@ public class IT extends JFrame {
 			}
 		});
 		Press5.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		Press5.setBounds(529, 270, 143, 38);
+		Press5.setBounds(529, 208, 143, 38);
 		contentPane.add(Press5);
+		
+		JButton DisposeButton = new JButton("\uCC3D\uB2EB\uAE30");
+		DisposeButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		DisposeButton.setBounds(516, 270, 156, 43);
+		DisposeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dispose();
+				
+			}
+		});
+		contentPane.add(DisposeButton);
 		
 		
 		Keyword1.addMouseListener(new MouseAdapter() {

@@ -10,11 +10,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Window.Type;
+import javax.swing.JButton;
 
 public class Key1_1 extends JFrame {
 
@@ -86,6 +91,20 @@ public class Key1_1 extends JFrame {
 		News3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
 		News3.setBounds(12, 99, 512, 75);
 		contentPane.add(News3);
+		
+		JButton DButton = new JButton("\uCC3D\uB2EB\uAE30");
+		DButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		DButton.setBounds(376, 248, 148, 43);
+		DButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dispose();
+				
+			}
+		});
+		contentPane.add(DButton);
 		setVisible(true);
 	}
 

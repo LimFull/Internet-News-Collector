@@ -15,6 +15,9 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Key1_5 extends JFrame {
 
@@ -146,6 +149,16 @@ public class Key1_5 extends JFrame {
 		News10.setHorizontalAlignment(SwingConstants.CENTER);
 		News10.setBounds(12, 222, 512, 43);
 		contentPane.add(News10);
+		
+		JButton btnNewButton = new JButton("\uCC3D\uB2EB\uAE30");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		btnNewButton.setBounds(396, 268, 128, 33);
+		contentPane.add(btnNewButton);
 		setVisible(true);
 	}
 
