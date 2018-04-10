@@ -24,21 +24,7 @@ library(stringr)
 # 문장의 형태소 분석을 위해 세종사전 불러옴
  useSejongDic()
 
-# 불필요한 문장 제거
- news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
- news_content<-gsub("\t","",news_content)
- news_content<-gsub("\n","",news_content)
- news_content<-gsub("\\{\\}","",news_content)
- news_content<-gsub("\\(\\)","",news_content)
- news_content<-gsub("사진=","",news_content)
- news_content<-gsub("기자]","",news_content)
- news_content<-gsub("기자)","",news_content)
- news_content<-gsub("을 "," ",news_content)
- news_content<-gsub("를 "," ",news_content)
- news_content<-gsub("▶.+","",news_content)
- news_content<-gsub("♥.+","",news_content)
-
- 
+# 문장을 쪼개기 위한 함수 정의
  words <- function(doc){
  doc<- as.character(doc)
  doc2<-paste(SimplePos22(doc))
@@ -47,6 +33,23 @@ library(stringr)
  doc4[!is.na(doc4)]
  }
 
+# 불필요한 글자 제거
+ news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
+ news_content<-gsub("\t","",news_content)
+ news_content<-gsub("\n","",news_content)
+ news_content<-gsub("\\{\\}","",news_content)
+ news_content<-gsub("\\(\\)","",news_content)
+ news_content<-gsub("사진=","",news_content)
+ news_content<-gsub("기자]","",news_content)
+ news_content<-gsub("기자)","",news_content)
+ news_content<-gsub("은 "," ",news_content)
+ news_content<-gsub("는 "," ",news_content)
+ news_content<-gsub("이 "," ",news_content)
+ news_content<-gsub("가 "," ",news_content)
+ news_content<-gsub("을 "," ",news_content)
+ news_content<-gsub("를 "," ",news_content)
+ news_content<-gsub("▶.+","",news_content)
+ news_content<-gsub("♥.+","",news_content)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
