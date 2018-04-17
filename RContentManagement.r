@@ -3,6 +3,8 @@ if (!requireNamespace("KoNLP")){
   install.packages("KoNLP")
 } 
 library(KoNLP)
+# rJava 패키지가 필요하다. 
+# rJava 패키지 설치 중 ERROR: configuration failed for package ‘rJava’ -> $ sudo R CMD javaconf -> 그래도 안되면 $ sudo apt-get install r-cran-rjava
 
 
 # tm 패키지 필요
