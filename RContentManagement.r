@@ -42,7 +42,7 @@ library(stringr)
  }
 
 # 불필요한 글자 제거
- news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
+ news_content<-gsub("flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
  news_content<-gsub("\t","",news_content)
  news_content<-gsub("\n","",news_content)
  news_content<-gsub("\\{\\}","",news_content)
