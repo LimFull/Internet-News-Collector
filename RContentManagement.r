@@ -12,6 +12,12 @@ if (!requireNamespace("tm")){
   install.packages("tm")
 } 
 library(tm)
+# tm 패키지 설치 중 dependency 'slam' is not available 오류 
+# -> install.packages('devtools')
+# -> library(devtools)
+# -> slam_url <- "https://cran.r-project.org/src/contrib/Archive/slam/slam_0.1-37.tar.gz"
+# -> install_url(slam_url)
+
 
 # wordcloud 패키지 필요
 if (!requireNamespace("wordcloud")){
