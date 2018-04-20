@@ -119,6 +119,7 @@ library(stringr)
 
 #워드클라우드 생성
  pdf.options(family = "Korea1deb")
+ jpeg(filename="cloud.jpg",width=1000,height=1000)
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
 
-
+  
