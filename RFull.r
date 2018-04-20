@@ -1,3 +1,51 @@
+#! /usr/bin/ Rscript 
+
+# 네이버뉴스 IT카테고리 첫 페이지 크롤링 예시
+# rvest 패키지 필요 : 
+if (!requireNamespace("rvest")){
+  install.packages("rvest")
+} 
+library(rvest)
+
+
+# dplyr 패키지 필요 : 
+if (!requireNamespace("dplyr")){
+  install.packages("dplyr")
+} 
+library(dplyr)
+
+# 리눅스에서 rvest 패키지 설치 오류 발생할 경우 터미널에 다음 명령 입력 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
+# rvest install 중 xml2 error -> sudo apt-get install libxml2 libxml2-dev
+
+ naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105'
+ html <- read_html(naver_url)
+ temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
+                html_attr('href')),unique(html_nodes(html,"#main_content .list_body .type06 a")%>%
+                                             html_attr('href')))
+ temp
+ 
+
+ news_url <-c()
+ news_url <- c(news_url,temp)
+ news_url 
+ 
+
+ news_content <- c()
+
+ for (i in 1:length(news_url)){
+     html <- read_html(news_url[i])
+     temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
+     news_content <- c(news_content,temp)
+ }
+  news <- cbind(url=news_url,content=unlist(news_content))
+ news <- as.data.frame(news)
+ news
+ dir.create("./Rdata",showWarnings = F) 
+# Create Rdata Folder
+ write.csv(news,file=paste0("./Rdata/news",".csv"),row.names = F)
+# Save as csv file
+
+
 # KoNLP 패키지 필요
 if (!requireNamespace("KoNLP")){
   install.packages("KoNLP")
@@ -74,36 +122,3 @@ library(stringr)
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
 
 
-
-#------------------result---------------------
-             doc[1:30]
-무궁화          18
-호              18
-멜론            13
-모든            10
-년              10
-위성            10
-추천            10
-그는             9
-기자             9
-위해             9
-통해             9
-월               9
-위성을           9
-vip              9
-금지             8
-재배포           8
-abs에            8
-블록체인         7
-이더리움         7
-이번             7
-넷마블은         7
-말했다           7
-콘텐츠를         7
-같은             6
-다양한           6
-대한             6
-밝혔다           6
-글로벌           6
-kt와             6
-내렸다           6
