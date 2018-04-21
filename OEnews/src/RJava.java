@@ -1,11 +1,11 @@
 import org.rosuda.JRI.*;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
- 
+
 public class RJava {
 public static void main (String[] args){
 try{
-	Process p = Runtime.getRuntime().exec("Rscript RFull.r");
+	Process p = Runtime.getRuntime().exec("make");
 	BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	String line = null;
 	while((line = br.readLine()) != null){
@@ -15,5 +15,6 @@ try{
 	System.err.println(e);
 
 }
+System.out.print("\nend");
 }
 }
