@@ -1,4 +1,6 @@
 #! /usr/bin/ Rscript 
+// 사용법: Rscript RFull.r
+// 첫번째 줄 내용 끝에  --vanilla --slave 쓰면 바로 실행 가능
 
 # 네이버뉴스 IT카테고리 첫 페이지 크롤링 예시
 # rvest 패키지 필요 : 
