@@ -42,6 +42,9 @@ if (!requireNamespace("wordcloud")){
 } 
 library(wordcloud)
 
+library(stringr)
+
+#-----------패키지 로딩---------------
 
  naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105'
  html <- read_html(naver_url)
@@ -76,7 +79,6 @@ library(wordcloud)
 
 # news_content에 뉴스 내용이 들어있어야 함
 
-library(stringr)
 
 # 문장의 형태소 분석을 위해 세종사전 불러옴
  useSejongDic()
