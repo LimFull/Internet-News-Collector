@@ -16,6 +16,32 @@ library(dplyr)
 
 # 리눅스에서 rvest 패키지 설치 오류 발생할 경우 터미널에 다음 명령 입력 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
 # rvest install 중 xml2 error -> sudo apt-get install libxml2 libxml2-dev
+# KoNLP 패키지 필요
+if (!requireNamespace("KoNLP")){
+  install.packages("KoNLP")
+} 
+library(KoNLP)
+# rJava 패키지가 필요하다. 
+# rJava 패키지 설치 중 ERROR: configuration failed for package ‘rJava’ -> $ sudo R CMD javaconf -> 그래도 안되면 $ sudo apt-get install r-cran-rjava
+
+
+# tm 패키지 필요
+if (!requireNamespace("tm")){
+  install.packages("tm")
+} 
+library(tm)
+# tm 패키지 설치 중 dependency 'slam' is not available 오류 
+# -> install.packages('devtools')
+# -> library(devtools)
+# -> slam_url <- "https://cran.r-project.org/src/contrib/Archive/slam/slam_0.1-37.tar.gz"
+# -> install_url(slam_url)
+
+# wordcloud 패키지 필요
+if (!requireNamespace("wordcloud")){
+  install.packages("wordcloud")
+} 
+library(wordcloud)
+
 
  naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105'
  html <- read_html(naver_url)
@@ -46,34 +72,9 @@ library(dplyr)
 # Save as csv file
 
 
-# KoNLP 패키지 필요
-if (!requireNamespace("KoNLP")){
-  install.packages("KoNLP")
-} 
-library(KoNLP)
-# rJava 패키지가 필요하다. 
-# rJava 패키지 설치 중 ERROR: configuration failed for package ‘rJava’ -> $ sudo R CMD javaconf -> 그래도 안되면 $ sudo apt-get install r-cran-rjava
 
 
-# tm 패키지 필요
-if (!requireNamespace("tm")){
-  install.packages("tm")
-} 
-library(tm)
-# tm 패키지 설치 중 dependency 'slam' is not available 오류 
-# -> install.packages('devtools')
-# -> library(devtools)
-# -> slam_url <- "https://cran.r-project.org/src/contrib/Archive/slam/slam_0.1-37.tar.gz"
-# -> install_url(slam_url)
-
-
-# wordcloud 패키지 필요
-if (!requireNamespace("wordcloud")){
-  install.packages("wordcloud")
-} 
-library(wordcloud)
-
-# news_content에 뉴스 내용이 들어있어야 함 (crawling code 참조)
+# news_content에 뉴스 내용이 들어있어야 함
 
 library(stringr)
 
