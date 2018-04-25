@@ -1,6 +1,5 @@
 #!/usr/bin/Rscript --vanilla --slave 
 
-# 네이버뉴스 정치카테고리 첫 페이지 크롤링 예시
 # rvest 패키지 필요 : 
 if (!requireNamespace("rvest")){
   install.packages("rvest")
