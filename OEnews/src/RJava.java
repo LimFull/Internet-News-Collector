@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 
 public class RJava {
 public static void main (String[] args){
+	
 try{
-	Process p = Runtime.getRuntime().exec("make SOCIETY");
+	Process p = Runtime.getRuntime().exec("make IT");
 	BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	String line = null;
 	while((line = br.readLine()) != null){
@@ -16,5 +17,6 @@ try{
 
 }
 System.out.print("\nend");
+ 
 }
 }
