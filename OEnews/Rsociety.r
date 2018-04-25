@@ -101,15 +101,10 @@ library(stringr)
  news_content<-gsub("사진=","",news_content)
  news_content<-gsub("기자]","",news_content)
  news_content<-gsub("기자)","",news_content)
+ news_content<-gsub("기자(","",news_content)
  news_content<-gsub("기자=","",news_content)
  news_content<-gsub("기자 =","",news_content)
  news_content<-gsub("기자 [a-z]+","",news_content)
- news_content<-gsub("은 "," ",news_content)
- news_content<-gsub("는 "," ",news_content)
- news_content<-gsub("이 "," ",news_content)
- news_content<-gsub("가 "," ",news_content)
- news_content<-gsub("을 "," ",news_content)
- news_content<-gsub("를 "," ",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
@@ -127,5 +122,5 @@ library(stringr)
 #워드클라우드 생성
  pdf.options(family = "Korea1deb") #pdf 한글 옵션
  png(filename="cloudsociety.png",width=500,height=500) #png 이미지 저장
- wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(9,3))
+ wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))
 
