@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Rlife {
-public static void main (String[] args){
-		
+	public Rlife(){
 		try{
 			Process p = Runtime.getRuntime().exec("make LIFE");
 			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -18,6 +17,5 @@ public static void main (String[] args){
 
 		}
 		System.out.print("\nend");
-		 
-		}
+	}
 }
