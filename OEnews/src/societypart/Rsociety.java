@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Rsociety {
-public static void main (String[] args){
+public Rsociety(){
 		
 		try{
 			Process p = Runtime.getRuntime().exec("make SOCIETY");
