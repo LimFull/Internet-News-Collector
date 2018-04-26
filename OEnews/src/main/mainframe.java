@@ -17,11 +17,11 @@ public class mainframe extends JFrame {
 	panel a = new panel();
 	a.setLayout(null);
 	JButton itbtn = new JButton(new ImageIcon("./img/normalit.png"));
-	JButton societybtn = new JButton(new ImageIcon("./img/normalit.png"));
+	JButton societybtn = new JButton(new ImageIcon("./img/normalsociety.png"));
 	//itbtn.setPreferredSize(new Dimension(100,100)); //절대위치
 	//itbtn.setBounds(130,150,95,30);  //x,y,width,height
 	//itbtn.setText("");  //버튼 텍스트
-	itbtn.setPressedIcon(new ImageIcon("./img/pressedit.png"));societybtn.setPressedIcon(new ImageIcon("./img/pressedit.png"));  //버튼 클릭 이미지
+	itbtn.setPressedIcon(new ImageIcon("./img/pressedit.png"));societybtn.setPressedIcon(new ImageIcon("./img/pressedsociety.png"));  //버튼 클릭 이미지
 	itbtn.setSize(234,60);societybtn.setSize(234,60);   //버튼 크기
 	itbtn.setLocation(115,140);societybtn.setLocation(451,140);  //버튼위치
 	itbtn.setVisible(true);societybtn.setVisible(true);
