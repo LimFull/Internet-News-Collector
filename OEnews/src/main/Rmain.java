@@ -12,8 +12,7 @@ import java.io.BufferedReader;
 
 public class Rmain {
 	public static void main(String[] args){
-		backframe bf = new backframe();
-		//mainframe mf = new mainframe();
+		mainframe mf = new mainframe();
 		//mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

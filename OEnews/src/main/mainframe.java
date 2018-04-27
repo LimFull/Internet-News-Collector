@@ -6,12 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import itpart.*;
 import economypart.*;
-
+import lifepart.*;
 
 public class mainframe extends JFrame {
 	private static final String ACTION_COMMAND_IT= "1";
 	private static final String ACTION_COMMAND_ECONOMY= "2";
-
+	private static final String ACTION_COMMAND_LIFE= "3";
  	
 	public mainframe(){
 
@@ -30,29 +30,66 @@ public class mainframe extends JFrame {
 	//itbtn.setPreferredSize(new Dimension(100,100)); //절대위치
 	//itbtn.setBounds(130,150,95,30);  //x,y,width,height
 	//itbtn.setText("");  //버튼 텍스트
-	itbtn.setPressedIcon(new ImageIcon("./img/pressedit.png"));societybtn.setPressedIcon(new ImageIcon("./img/pressedsociety.png"));  //버튼 클릭 이미지
-	lifebtn.setPressedIcon(new ImageIcon("./img/pressedlife.png"));politicsbtn.setPressedIcon(new ImageIcon("./img/pressedpolitics.png"));
+	itbtn.setPressedIcon(new ImageIcon("./img/pressedit.png"));
+	societybtn.setPressedIcon(new ImageIcon("./img/pressedsociety.png"));  //버튼 클릭 이미지
+	lifebtn.setPressedIcon(new ImageIcon("./img/pressedlife.png"));
+	politicsbtn.setPressedIcon(new ImageIcon("./img/pressedpolitics.png"));
 	economybtn.setPressedIcon(new ImageIcon("./img/pressedeconomy.png"));
-	itbtn.setSize(234,60);societybtn.setSize(234,60);lifebtn.setSize(234,60);politicsbtn.setSize(234,60);economybtn.setSize(234,60);   //버튼 크기
-	itbtn.setLocation(115,140);societybtn.setLocation(451,140);lifebtn.setLocation(115,250);politicsbtn.setLocation(451,250);economybtn.setLocation(115,360);  //버튼위치
-	itbtn.setVisible(true);societybtn.setVisible(true);lifebtn.setVisible(true);politicsbtn.setVisible(true);economybtn.setVisible(true);
-	itbtn.setBorderPainted(false);societybtn.setBorderPainted(false);lifebtn.setBorderPainted(false);politicsbtn.setBorderPainted(false);economybtn.setBorderPainted(false);  //버튼 외곽선
-	itbtn.setContentAreaFilled(false);societybtn.setContentAreaFilled(false);lifebtn.setContentAreaFilled(false);politicsbtn.setContentAreaFilled(false);economybtn.setContentAreaFilled(false);  //버튼 내용영역
-	itbtn.setFocusPainted(false);societybtn.setFocusPainted(false);lifebtn.setFocusPainted(false);politicsbtn.setFocusPainted(false);economybtn.setFocusPainted(false);  //버튼 선택 시 테두리
+	itbtn.setSize(234,60);
+	societybtn.setSize(234,60);
+	lifebtn.setSize(234,60);
+	politicsbtn.setSize(234,60);
+	economybtn.setSize(234,60);   //버튼 크기
+	
+	itbtn.setLocation(115,140);
+	societybtn.setLocation(451,140);
+	lifebtn.setLocation(115,250);
+	politicsbtn.setLocation(451,250);
+	economybtn.setLocation(115,360);  //버튼위치
+	
+	itbtn.setVisible(true);
+	societybtn.setVisible(true);
+	lifebtn.setVisible(true);
+	politicsbtn.setVisible(true);
+	economybtn.setVisible(true);
+	
+	itbtn.setBorderPainted(false);
+	societybtn.setBorderPainted(false);
+	lifebtn.setBorderPainted(false);
+	politicsbtn.setBorderPainted(false);
+	economybtn.setBorderPainted(false);  //버튼 외곽선
+	
+	itbtn.setContentAreaFilled(false);
+	societybtn.setContentAreaFilled(false);
+	lifebtn.setContentAreaFilled(false);
+	politicsbtn.setContentAreaFilled(false);
+	economybtn.setContentAreaFilled(false);  //버튼 내용영역
+	
+	itbtn.setFocusPainted(false);
+	societybtn.setFocusPainted(false);
+	lifebtn.setFocusPainted(false);
+	politicsbtn.setFocusPainted(false);
+	economybtn.setFocusPainted(false);  //버튼 선택 시 테두리
 	
 	//액션리스너 생성
 	ActionListener listener = new ActionListener(){
 		public void actionPerformed(ActionEvent e){
 			if (e.getActionCommand().equals(ACTION_COMMAND_IT)){
-				dispose();
 				itcontent itc = new itcontent();
+				dispose();
 				}
 			if (e.getActionCommand().equals(ACTION_COMMAND_ECONOMY)){
-				economycontent ecc = new economycontent();
+				economycontent economyc = new economycontent();
+				dispose();
+			}
+			if (e.getActionCommand().equals(ACTION_COMMAND_LIFE)){
+				lifecontent lifec = new lifecontent();
+				dispose();
 			}
 		}
 	};
 	
+	lifebtn.addActionListener(listener);
 	itbtn.addActionListener(listener);
 	economybtn.addActionListener(listener);
 	a.add(itbtn); a.add(societybtn); a.add(lifebtn); a.add(politicsbtn); a.add(economybtn);
@@ -63,6 +100,7 @@ public class mainframe extends JFrame {
 	
 	itbtn.setActionCommand(ACTION_COMMAND_IT);
 	economybtn.setActionCommand(ACTION_COMMAND_ECONOMY);
+	lifebtn.setActionCommand(ACTION_COMMAND_LIFE);
 
 
 	}//여기까지 생성자
