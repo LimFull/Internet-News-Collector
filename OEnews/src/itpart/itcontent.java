@@ -1,8 +1,5 @@
 package itpart;
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
-
-
-
 import java.awt.*;
 
 public class itcontent extends JFrame {
