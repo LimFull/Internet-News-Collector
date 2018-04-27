@@ -13,7 +13,7 @@ public class mainframe extends JFrame {
 	private static final String ACTION_COMMAND_ECONOMY= "2";
 	private static final String ACTION_COMMAND_LIFE= "3";
  	
-	mainframe(){
+	public mainframe(){
 
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	GraphicsDevice gd = ge.getDefaultScreenDevice();
@@ -76,12 +76,15 @@ public class mainframe extends JFrame {
 		public void actionPerformed(ActionEvent e){
 			if (e.getActionCommand().equals(ACTION_COMMAND_IT)){
 				itcontent itc = new itcontent();
+				dispose();
 				}
 			if (e.getActionCommand().equals(ACTION_COMMAND_ECONOMY)){
 				economycontent economyc = new economycontent();
+				dispose();
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_LIFE)){
 				lifecontent lifec = new lifecontent();
+				dispose();
 			}
 		}
 	};
