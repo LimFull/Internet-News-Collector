@@ -7,7 +7,7 @@ import itpart.*;
 
 
 public class mainframe extends JFrame {
-	private static final String ACTION_COMMAND = "1";
+	private static final String ACTION_COMMAND_IT = "1";
  	
 	mainframe(){
 
@@ -36,22 +36,23 @@ public class mainframe extends JFrame {
 	itbtn.setContentAreaFilled(false);societybtn.setContentAreaFilled(false);lifebtn.setContentAreaFilled(false);politicsbtn.setContentAreaFilled(false);economybtn.setContentAreaFilled(false);  //버튼 내용영역
 	itbtn.setFocusPainted(false);societybtn.setFocusPainted(false);lifebtn.setFocusPainted(false);politicsbtn.setFocusPainted(false);economybtn.setFocusPainted(false);  //버튼 선택 시 테두리
 	
+	//액션리스너 생성
 	ActionListener listener = new ActionListener(){
 		public void actionPerformed(ActionEvent e){
-			if (e.getActionCommand().equals(ACTION_COMMAND)){
+			if (e.getActionCommand().equals(ACTION_COMMAND_IT)){
 				itcontent itc = new itcontent();
 				}
 		}
 	};
 	
-	itbtn.addActionListener(listener);
+	itbtn.addActionListener(listener); //버튼에 리스너 추가
 	a.add(itbtn); a.add(societybtn); a.add(lifebtn); a.add(politicsbtn); a.add(economybtn);
 	this.add(a);
 	this.setSize(800,480); //라즈베리파이 7인치 터치 스크린 해상도 
 	this.setVisible(true);
 	gd.setFullScreenWindow(this);  //전체
 	
-	itbtn.setActionCommand(ACTION_COMMAND);
+	itbtn.setActionCommand(ACTION_COMMAND_IT);
 
 	}//여기까지 생성자
  
