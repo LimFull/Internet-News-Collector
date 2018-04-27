@@ -14,7 +14,9 @@ library(dplyr)
 
 # 리눅스에서 rvest 패키지 설치 오류 발생할 경우 터미널에 다음 명령 입력 -> sudo apt-get install libcurl4-openssl-dev libssl-dev
 # rvest install 중 xml2 error -> sudo apt-get install libxml2 libxml2-dev
-
+# rvest install jvm error -> sudo apt-get purge openjdk-8-jre-headless
+			     sudo apt-get install openjdk-8-jre-headless
+			     sudo apt-get install openjdk-8-jre
  naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105'
  html <- read_html(naver_url)
  temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
