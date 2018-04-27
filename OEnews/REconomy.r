@@ -1,6 +1,5 @@
 #!/usr/bin/Rscript --vanilla --slave 
 
-# 네이버뉴스 카테고리 첫 페이지 크롤링 예시
 # rvest 패키지 필요 : 
 if (!requireNamespace("rvest")){
   install.packages("rvest")
@@ -101,12 +100,10 @@ news_content<-gsub("\\(\\)","",news_content)
 news_content<-gsub("사진=","",news_content)
 news_content<-gsub("기자]","",news_content)
 news_content<-gsub("기자)","",news_content)
-news_content<-gsub("은 "," ",news_content)
-news_content<-gsub("는 "," ",news_content)
-news_content<-gsub("이 "," ",news_content)
-news_content<-gsub("가 "," ",news_content)
-news_content<-gsub("을 "," ",news_content)
-news_content<-gsub("를 "," ",news_content)
+news_content<-gsub("기자\\(","",news_content) 
+news_content<-gsub("기자=","",news_content) 
+news_content<-gsub("기자 =","",news_content) 
+news_content<-gsub("기자 [a-z]+","",news_content)
 news_content<-gsub("▶.+","",news_content)
 news_content<-gsub("♥.+","",news_content)
 
@@ -120,9 +117,7 @@ doc <- doc[order(doc,decreasing=T)]
 doc <- as.data.frame(doc[1:30])
 doc
 
-#워드클라우드 생성
-pdf.options(family = "Korea1deb") #pdf 한글 옵션
-png(filename="cloud.png",width=500,height=500) #png 이미지 저장
-wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
-
-
+#워드클라우드 생성 
+pdf.options(family = "Korea1deb") #pdf 한글 옵션 
+png(filename="cloudit.png",width=500,height=500) #png 이미지 저장 
+wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))

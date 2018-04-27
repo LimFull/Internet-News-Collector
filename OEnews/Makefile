@@ -1,6 +1,15 @@
-all:
-	chmod u+x RFull.r
-	sudo ./RFull.r
 IT:
 	chmod u+x Rit.r
 	sudo ./Rit.r
+SOCIETY:
+	chmod u+x Rsociety.r
+	sudo ./Rsociety.r
+LIFE:
+	chmod u+x Rlife.r
+	sudo ./Rlife.r
+POLITICS:
+	chmod u+x RPolitics.r
+	sudo ./RPolitics.r
+ECONOMY:
+	chmod u+x REconomy.r
+	sudo ./REconomy.r

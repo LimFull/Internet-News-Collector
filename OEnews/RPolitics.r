@@ -1,6 +1,5 @@
 #!/usr/bin/Rscript --vanilla --slave 
 
-# 네이버뉴스 정치카테고리 첫 페이지 크롤링 예시
 # rvest 패키지 필요 : 
 if (!requireNamespace("rvest")){
   install.packages("rvest")
@@ -101,18 +100,16 @@ news_content<-gsub("\\(\\)","",news_content)
 news_content<-gsub("사진=","",news_content)
 news_content<-gsub("기자]","",news_content)
 news_content<-gsub("기자)","",news_content)
-news_content<-gsub("은 "," ",news_content)
-news_content<-gsub("는 "," ",news_content)
-news_content<-gsub("이 "," ",news_content)
-news_content<-gsub("가 "," ",news_content)
-news_content<-gsub("을 "," ",news_content)
-news_content<-gsub("를 "," ",news_content)
+news_content<-gsub("기자\\(","",news_content)
+news_content<-gsub("기자=","",news_content)
+news_content<-gsub("기자 =","",news_content) 
+news_content<-gsub("기자 [a-z]+","",news_content)
 news_content<-gsub("▶.+","",news_content)
 news_content<-gsub("♥.+","",news_content)
 
 doc <- Corpus(VectorSource(news_content))
 doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                           stopwords=c("","며","월","많","당","전","이날","대해","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","photo","및","을","▲","를","수","일","등을","등","newsis","뉴시스","사진","영상","뉴스","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","기자","또", "flash")))
+                                           stopwords=c("오전","","며","월","많","당","전","이날","대해","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","photo","및","을","▲","를","수","일","등을","등","newsis","뉴시스","사진","영상","뉴스","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","기자","또", "flash")))
 
 doc <- as.matrix(doc)
 doc <- rowSums(doc) 
@@ -121,8 +118,6 @@ doc <- as.data.frame(doc[1:30])
 doc
 
 #워드클라우드 생성
-pdf.options(family = "Korea1deb") #pdf 한글 옵션
-png(filename="cloud.png",width=500,height=500) #png 이미지 저장
-wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
-
-
+pdf.options(family = "Korea1deb") #pdf 한글옵션
+png(filename="cloudit.png",width=500,height=500) #png 이미지 저장
+wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))

@@ -45,7 +45,7 @@ library(stringr)
 
 #-----------패키지 로딩---------------
 
- naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105'
+ naver_url <- 'http://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=103'
  html <- read_html(naver_url)
  temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
                 html_attr('href')),unique(html_nodes(html,"#main_content .list_body .type06 a")%>%
@@ -104,12 +104,16 @@ library(stringr)
  news_content<-gsub("기자=","",news_content)
  news_content<-gsub("기자 =","",news_content)
  news_content<-gsub("기자 [a-z]+","",news_content)
+ news_content<-gsub("\\[한겨레\\]","",news_content)
+ news_content<-gsub("”","",news_content)
+ news_content<-gsub("\"","",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
+ news_content<-gsub("☎ ","",news_content)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("그는","것이","것을","디지털데일리","또","중","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                            stopwords=c("오전","오후","쓴","옮김","제공","그가","그의","그","그는","거의","것이","것이다","더","자신의","할","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
  doc <- rowSums(doc) 
@@ -119,7 +123,7 @@ library(stringr)
 
 #워드클라우드 생성
  pdf.options(family = "Korea1deb") #pdf 한글 옵션
- png(filename="cloudit.png",width=500,height=500) #png 이미지 저장
+ png(filename="cloudlife.png",width=500,height=500) #png 이미지 저장
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))
 
-
+  
