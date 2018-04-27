@@ -1,20 +1,15 @@
-package itpart;
+package economypart;
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 import java.awt.*;
 
-public class itcontent extends JFrame {
-public itcontent(){
+public class economycontent extends JFrame {
+public economycontent(){
 	setUndecorated(true);
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	GraphicsDevice gd = ge.getDefaultScreenDevice();
 	
 	panel a = new panel();
-	a.setLayout(null);
-	JButton backbtn = new JButton();
-	backbtn.setSize(80,30);
-	backbtn.setVisible(true);
 	
-	a.add(backbtn);
 	this.add(a);
 	this.setSize(800,480);
 	this.setVisible(true);
