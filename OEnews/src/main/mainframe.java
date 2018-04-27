@@ -1,13 +1,17 @@
 package main;
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import itpart.*;
+import economypart.*;
 
 
 public class mainframe extends JFrame {
-	private static final String ACTION_COMMAND_IT = "1";
+	private static final String ACTION_COMMAND_IT= "1";
+	private static final String ACTION_COMMAND_ECONOMY= "1";
+
  	
 	mainframe(){
 
@@ -42,10 +46,14 @@ public class mainframe extends JFrame {
 			if (e.getActionCommand().equals(ACTION_COMMAND_IT)){
 				itcontent itc = new itcontent();
 				}
+			if (e.getActionCommand().equals(ACTION_COMMAND_ECONOMY)){
+				economycontent ecc = new economycontent();
+			}
 		}
 	};
 	
-	itbtn.addActionListener(listener); //버튼에 리스너 추가
+	itbtn.addActionListener(listener);
+	economybtn.addActionListener(listener);
 	a.add(itbtn); a.add(societybtn); a.add(lifebtn); a.add(politicsbtn); a.add(economybtn);
 	this.add(a);
 	this.setSize(800,480); //라즈베리파이 7인치 터치 스크린 해상도 
@@ -53,6 +61,8 @@ public class mainframe extends JFrame {
 	gd.setFullScreenWindow(this);  //전체
 	
 	itbtn.setActionCommand(ACTION_COMMAND_IT);
+	economybtn.setActionCommand(ACTION_COMMAND_ECONOMY);
+
 
 	}//여기까지 생성자
  
