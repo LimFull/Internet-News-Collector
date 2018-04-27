@@ -10,10 +10,10 @@ import economypart.*;
 
 public class mainframe extends JFrame {
 	private static final String ACTION_COMMAND_IT= "1";
-	private static final String ACTION_COMMAND_ECONOMY= "1";
+	private static final String ACTION_COMMAND_ECONOMY= "2";
 
  	
-	mainframe(){
+	public mainframe(){
 
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	GraphicsDevice gd = ge.getDefaultScreenDevice();
@@ -44,6 +44,7 @@ public class mainframe extends JFrame {
 	ActionListener listener = new ActionListener(){
 		public void actionPerformed(ActionEvent e){
 			if (e.getActionCommand().equals(ACTION_COMMAND_IT)){
+				dispose();
 				itcontent itc = new itcontent();
 				}
 			if (e.getActionCommand().equals(ACTION_COMMAND_ECONOMY)){
