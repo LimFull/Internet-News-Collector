@@ -9,8 +9,8 @@ public class mainframe extends JFrame {
  	
 	mainframe(){
 
-	//GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	//GraphicsDevice gd = ge.getDefaultScreenDevice();
+	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	GraphicsDevice gd = ge.getDefaultScreenDevice();
 	this.setTitle("OEnews");
 	setUndecorated(true);  //타이틀바 제거
 	
@@ -38,7 +38,7 @@ public class mainframe extends JFrame {
 	this.add(a);
 	this.setSize(800,480); //라즈베리파이 7인치 터치 스크린 해상도 
 	this.setVisible(true);
-	//gd.setFullScreenWindow(this);  //전체화면	
+	gd.setFullScreenWindow(this);  //전체화면	
 	}
 }
 
