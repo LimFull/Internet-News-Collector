@@ -7,12 +7,16 @@ import java.awt.event.ActionListener;
 import itpart.*;
 import economypart.*;
 import lifepart.*;
+import politicspart.*;
+import societypart.*;
 
 public class mainframe extends JFrame {
 	private static final String ACTION_COMMAND_IT= "1";
 	private static final String ACTION_COMMAND_ECONOMY= "2";
 	private static final String ACTION_COMMAND_LIFE= "3";
- 	
+	private static final String ACTION_COMMAND_POLITICS= "4";
+	private static final String ACTION_COMMAND_SOCIETY= "5";
+
 	public mainframe(){
 
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -86,21 +90,33 @@ public class mainframe extends JFrame {
 				lifecontent lifec = new lifecontent();
 				dispose();
 			}
+			if (e.getActionCommand().equals(ACTION_COMMAND_POLITICS)){
+				politicscontent politicsc = new politicscontent();
+				dispose();
+			}
+			if (e.getActionCommand().equals(ACTION_COMMAND_SOCIETY)){
+				societycontent societyc = new societycontent();
+				dispose();
+			}
 		}
 	};
 	
 	lifebtn.addActionListener(listener);
 	itbtn.addActionListener(listener);
 	economybtn.addActionListener(listener);
+	politicsbtn.addActionListener(listener);
+	societybtn.addActionListener(listener);
 	a.add(itbtn); a.add(societybtn); a.add(lifebtn); a.add(politicsbtn); a.add(economybtn);
 	this.add(a);
 	this.setSize(800,480); //라즈베리파이 7인치 터치 스크린 해상도 
 	this.setVisible(true);
 	//gd.setFullScreenWindow(this);  //전체
 	
-	itbtn.setActionCommand(ACTION_COMMAND_IT);
+	itbtn.setActionCommand(ACTION_COMMAND_IT); //리스너가 버튼을 구분할 때 사용함
 	economybtn.setActionCommand(ACTION_COMMAND_ECONOMY);
 	lifebtn.setActionCommand(ACTION_COMMAND_LIFE);
+	politicsbtn.setActionCommand(ACTION_COMMAND_POLITICS);
+	societybtn.setActionCommand(ACTION_COMMAND_SOCIETY);
 
 
 	}//여기까지 생성자
