@@ -13,7 +13,7 @@ public economycontent(){
 	this.add(a);
 	this.setSize(800,480);
 	this.setVisible(true);
-	gd.setFullScreenWindow(this); 
+	//gd.setFullScreenWindow(this); 
 }
 }
 
