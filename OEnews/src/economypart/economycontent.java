@@ -17,9 +17,14 @@ public economycontent(){
 	
 	panel a = new panel();
 	a.setLayout(null);
-	JButton backbtn = new JButton(new ImageIcon("./img/normalit.png"));
-	backbtn.setSize(80,30);
+	JButton backbtn = new JButton(new ImageIcon("./img/backbtn.png"));
+	backbtn.setPressedIcon(new ImageIcon("./img/pressedbackbtn.png"));
+	backbtn.setSize(45,45);
 	backbtn.setVisible(true);
+	backbtn.setLocation(15,43);
+	backbtn.setBorderPainted(false);  //버튼 외곽선
+	backbtn.setContentAreaFilled(false);
+	backbtn.setFocusPainted(false);
 	
 	ActionListener listener = new ActionListener(){
 		public void actionPerformed(ActionEvent e){
