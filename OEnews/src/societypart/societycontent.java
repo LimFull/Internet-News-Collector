@@ -1,4 +1,4 @@
-package itpart;
+package societypart;
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 import main.*;
 
@@ -9,9 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class itcontent extends JFrame {
+public class societycontent extends JFrame {
 	private static final String ACTION_COMMAND_BACK= "1";
-public itcontent(){
+public societycontent(){
 	setUndecorated(true);
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	GraphicsDevice gd = ge.getDefaultScreenDevice();
