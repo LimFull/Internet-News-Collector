@@ -96,7 +96,7 @@ public class mainframe extends JFrame {
 	this.add(a);
 	this.setSize(800,480); //라즈베리파이 7인치 터치 스크린 해상도 
 	this.setVisible(true);
-	gd.setFullScreenWindow(this);  //전체
+	//gd.setFullScreenWindow(this);  //전체
 	
 	itbtn.setActionCommand(ACTION_COMMAND_IT);
 	economybtn.setActionCommand(ACTION_COMMAND_ECONOMY);
