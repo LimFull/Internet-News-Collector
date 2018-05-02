@@ -106,12 +106,22 @@ library(stringr)
  news_content<-gsub("기자 [a-z]+","",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
+ news_content<-gsub("무단전재 및 재배포 금지","",news_content)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("그는","것이","것을","디지털데일리","또","중","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                            stopwords=c("하는","했다","만","대한","위한","hankyung","이번","할","에","그는","것이","것을","디지털데일리","또","중","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
+
+ #많이 나온 단어의 링크 추출
+ wordurl <- c()
+ sortedword <- doc[rev(order(rowSums(doc))),]
+ for (i in 1:3){
+ for (j in 1:20){
+if (sortedword[i,j] != 0) {
+wordurl[i] <- c(news_url[j])}}} 
+
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
  doc <- as.data.frame(doc[1:30])
@@ -122,4 +132,5 @@ library(stringr)
  png(filename="cloudit.png",width=500,height=500) #png 이미지 저장
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))
 
-
+#wordurl 확인
+wordurl

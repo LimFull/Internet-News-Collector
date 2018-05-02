@@ -114,6 +114,15 @@ stopwords=c("오전","오후","","며","월","많","당","전","이날","대해"
 으로","년","있는","지난","말했다","이를","한","기자","또", "flash")))
 
  doc <- as.matrix(doc)
+
+ #많이 나온 단어의 링크 추출
+ wordurl <- c()
+ sortedword <- doc[rev(order(rowSums(doc))),]
+ for (i in 1:3){
+ for (j in 1:20){
+if (sortedword[i,j] != 0) {
+wordurl[i] <- c(news_url[j])}}} 
+
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
  doc <- as.data.frame(doc[1:30])
@@ -124,4 +133,5 @@ stopwords=c("오전","오후","","며","월","많","당","전","이날","대해"
  png(filename="cloudpolitics.png",width=500,height=500) #png 이미지 저장
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))
 
-
+#wordurl 확인
+wordurl

@@ -113,9 +113,18 @@ library(stringr)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("오전","오후","쓴","옮김","제공","그가","그의","그","그는","거의","것이","것이다","더","자신의","할","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                            stopwords=c("중","당시","그런데","매우","없었다","있었다","또","∼","▲","월","위한","도","했다","게","오전","오후","쓴","옮김","제공","그가","그의","그","그는","거의","것이","것이다","더","자신의","할","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
+
+ #많이 나온 단어의 링크 추출
+ wordurl <- c()
+ sortedword <- doc[rev(order(rowSums(doc))),]
+ for (i in 1:3){
+ for (j in 1:20){
+if (sortedword[i,j] != 0) {
+wordurl[i] <- c(news_url[j])}}} 
+
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
  doc <- as.data.frame(doc[1:30])
@@ -126,4 +135,5 @@ library(stringr)
  png(filename="cloudlife.png",width=500,height=500) #png 이미지 저장
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))
 
-  
+#wordurl 확인
+wordurl
