@@ -119,6 +119,15 @@ library(stringr)
                                             stopwords=c("그래서","그런","news","밝혔다","이번","그리고","서울경제","세계일보","며","하는","위한","이라고","yna","명이","중","김","이날","명은","뉴스","있습니다","시","오후","오전","했다","명","개","조","강","씨","측","월","전","시간","newsis","또","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
+
+ #많이 나온 단어의 링크 추출
+ wordurl <- c()
+ sortedword <- doc[rev(order(rowSums(doc))),]
+ for (i in 1:3){
+ for (j in 1:20){
+if (sortedword[i,j] != 0) {
+wordurl[i] <- c(news_url[j])}}} 
+
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
  doc <- as.data.frame(doc[1:30])
@@ -129,3 +138,5 @@ library(stringr)
  png(filename="cloudsociety.png",width=500,height=500) #png 이미지 저장
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(7,3))
 
+#wordurl 확인
+wordurl
