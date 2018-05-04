@@ -68,10 +68,6 @@ for (i in 1:length(news_url)){
 news <- cbind(url=news_url,content=unlist(news_content))
 news <- as.data.frame(news)
 news
-dir.create("./Rdata",showWarnings = F) 
-# Create Rdata Folder
-write.csv(news,file=paste0("./Rdata/news",".csv"),row.names = F)
-# Save as csv file
 
 
 
@@ -109,7 +105,7 @@ news_content<-gsub("♥.+","",news_content)
 
 doc <- Corpus(VectorSource(news_content))
 doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                           stopwords=c("총","이번","현재","시","월","기자","에","높은","기록했다","기록하며","위를","위치했다","밝혔다","등의","중","최근","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                           stopwords=c("총","이번","현재","시","월","에","높은","기록했다","기록하며","위를","위치했다","밝혔다","등의","중","최근","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
 doc <- as.matrix(doc)
 
@@ -135,3 +131,11 @@ wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, rando
 
 #wordurl 확인
 wordurl
+
+#키워드를 따로 저장하기 위해 doc의 행 이름들을 keywords에 넣음
+ keywords <- rownames(doc)
+#Rdata 폴더 생성
+ dir.create("./Rdata",showWarnings = F) 
+#wordurl, keywords를 csv파일로 저장
+ write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
+ write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
