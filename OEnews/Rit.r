@@ -115,12 +115,14 @@ library(stringr)
  doc <- as.matrix(doc)
 
  #많이 나온 단어의 링크 추출
- wordurl <- c()
+ wordurl <- matrix(nrow=3, ncol=20)
  sortedword <- doc[rev(order(rowSums(doc))),]
  for (i in 1:3){
+ k <- 0
  for (j in 1:20){
 if (sortedword[i,j] != 0) {
-wordurl[i] <- c(news_url[j])}}} 
+k <- k+1
+wordurl[i,k] <- c(news_url[j])}}} 
 
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
