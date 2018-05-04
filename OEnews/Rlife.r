@@ -109,7 +109,8 @@ library(stringr)
  news_content<-gsub("\"","",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
- news_content<-gsub("☎ ","",news_content)
+ news_content<-gsub("☎","",news_content)
+ news_content<-gsub("newsis\\.com","",news_content)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
