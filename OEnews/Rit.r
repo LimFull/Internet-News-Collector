@@ -115,10 +115,10 @@ library(stringr)
  doc <- as.matrix(doc)
 
  #많이 나온 단어의 링크 추출
- wordurl <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 url을 담을 벡터 생성
+ wordurl <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 url을 담을 행렬 생성   
  sortedword <- doc[rev(order(rowSums(doc))),]           #총 등장 횟수(행의 합)를 기준으로 정렬한 sortedword 벡터 생성
  for (i in 1:3){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
- k <- 0
+ k <- 0                                # url과 url 사이에 공백이 끼어들지 않도록 k를 이용해 url을 빽빽히 쌓는다. 새로운 행에 대한 루프를 돌 때마다 0으로 초기화 해준다.
  for (j in 1:20){                      # j : 몇 개의 기사를 검사할 것인지
 if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기사에 포함될 경우 (0이 아닌 경우)
 k <- k+1
