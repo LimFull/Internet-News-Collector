@@ -3,6 +3,8 @@ if (!requireNamespace("KoNLP")){
   install.packages("KoNLP")
 } 
 library(KoNLP)
+# rJava 패키지가 필요하다. 
+# rJava 패키지 설치 중 ERROR: configuration failed for package ‘rJava’ -> $ sudo R CMD javareconf -> 그래도 안되면 $ sudo apt-get install r-cran-rjava
 
 
 # tm 패키지 필요
@@ -10,6 +12,12 @@ if (!requireNamespace("tm")){
   install.packages("tm")
 } 
 library(tm)
+# tm 패키지 설치 중 dependency 'slam' is not available 오류 
+# -> install.packages('devtools')
+# -> library(devtools)
+# -> slam_url <- "https://cran.r-project.org/src/contrib/Archive/slam/slam_0.1-37.tar.gz"
+# -> install_url(slam_url)
+
 
 # wordcloud 패키지 필요
 if (!requireNamespace("wordcloud")){
@@ -34,7 +42,7 @@ library(stringr)
  }
 
 # 불필요한 글자 제거
- news_content<-gsub("\n\t\n\t\n\n\n\n// flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
+ news_content<-gsub("flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
  news_content<-gsub("\t","",news_content)
  news_content<-gsub("\n","",news_content)
  news_content<-gsub("\\{\\}","",news_content)
@@ -53,7 +61,7 @@ library(stringr)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("의","위해","것","고","com","있다","및","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한")))
+                                            stopwords=c("많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
  doc <- rowSums(doc) 
@@ -62,6 +70,7 @@ library(stringr)
  doc
 
 #워드클라우드 생성
+ pdf.options(family = "Korea1deb")
  wordcloud(words = rownames(doc),freq = doc$doc, min.freq=1, max.words=200, random.order=FALSE,rot.per=0.3,colors=brewer.pal(5,"Dark2"), scale=c(3,1))
 
 
