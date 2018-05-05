@@ -68,10 +68,6 @@ library(stringr)
   news <- cbind(url=news_url,content=unlist(news_content))
  news <- as.data.frame(news)
  news
- dir.create("./Rdata",showWarnings = F) 
-# Create Rdata Folder
- write.csv(news,file=paste0("./Rdata/news",".csv"),row.names = F)
-# Save as csv file
 
 
 
@@ -128,7 +124,7 @@ wordurl[i,k] <- c(news_url[j])}}}        # wordurl[i]에 j번째 기사의 url�
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
  doc <- as.data.frame(doc[1:30])
- doc
+  
 
 #워드클라우드 생성
  pdf.options(family = "Korea1deb") #pdf 한글 옵션
@@ -137,3 +133,11 @@ wordurl[i,k] <- c(news_url[j])}}}        # wordurl[i]에 j번째 기사의 url�
 
 #wordurl 확인
 wordurl
+
+#키워드를 따로 저장하기 위해 doc의 행 이름들을 keywords에 넣음
+ keywords <- rownames(doc)
+#Rdata 폴더 생성
+ dir.create("./Rdata",showWarnings = F) 
+#wordurl, keywords를 csv파일로 저장
+ write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
+ write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
