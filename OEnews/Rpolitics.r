@@ -49,12 +49,12 @@ library(stringr)
  html <- read_html(naver_url)
  temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
                 html_attr('href')),unique(html_nodes(html,"#main_content .list_body .type06 a")%>%
-                                             html_attr('href')))
+                                             html_attr('href')),repair_encoding(html_text(html_nodes(html,'.writing')),from = 'utf-8'))
  temp
- 
+ speech<-temp[21:40] #언론사명 저장 
 
  news_url <-c()
- news_url <- c(news_url,temp)
+ news_url <- c(news_url,temp[1:20])
  news_url 
  
 
