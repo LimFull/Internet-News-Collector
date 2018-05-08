@@ -148,3 +148,4 @@ wordurl
 #wordurl, keywords를 csv파일로 저장
  write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
  write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
+ write.csv(wordtitle,file=paste0("./Rdata/wordtitle",".csv"),row.names = F)
