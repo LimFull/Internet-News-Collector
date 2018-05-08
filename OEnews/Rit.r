@@ -141,8 +141,8 @@ wordurl
 #Rdata 폴더 생성
  dir.create("./Rdata",showWarnings = F) 
 #wordurl, keywords를 csv파일로 저장
- write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
- write.csv(wordspeech,file=paste0("./Rdata/wordspeech",".csv"),row.names = F)
+ write.csv(wordurl,file=paste0("./Rdata/ITwordurl",".csv"),row.names = F)
+ write.csv(wordspeech,file=paste0("./Rdata/ITwordspeech",".csv"),row.names = F)
  doc
- write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
+ write.table(keywords,file=paste0("./Rdata/ITkeywords",".csv"),row.names = F,col.names = F)
 
