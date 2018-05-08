@@ -1,0 +1,18 @@
+INDEX VERSION 1.126+/home/pi/Internet-News-Collector/.metadata/.plugins/org.eclipse.jdt.core
+4128489415.index
+2009189226.index
+3762872041.index
+3721524864.index
+1301942156.index
+3978871575.index
+850704152.index
+2831456006.index
+465084172.index
+655461130.index
+1500864942.index
+1666857911.index
+18886293.index
+3254860084.index
+3643856878.index
+2436790647.index
+3780632982.index
