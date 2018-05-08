@@ -59,15 +59,12 @@ library(stringr)
  
 
  news_content <- c()
- news_title <- c()
 
 
  for (i in 1:length(news_url)){
      html <- read_html(news_url[i])
      temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
      news_content <- c(news_content,temp)
-     temp <- repair_encoding(html_text(html_nodes(html,'h3#articleTitle')),from = 'utf-8')
-     news_title <- c(news_title,temp)
  }
  news <- cbind(url=news_url,content=unlist(news_content))
  news <- as.data.frame(news)
@@ -125,7 +122,6 @@ stopwords=c("오전","오후","","며","월","많","당","전","이날","대해"
 if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기사에 포함될 경우 (0이 아닌 경우)
 k <- k+1
 wordurl[i,k] <- c(news_url[j])        # wordurl[i]에 j번째 기사의 url을 넣는다.
-wordtitle[i,k] <- c(news_title[j])    # wordtitle에 j번째 기사의 제목 넣는다.
 }}}        
 
  doc <- rowSums(doc) 
@@ -148,4 +144,4 @@ wordurl
 #wordurl, keywords를 csv파일로 저장
  write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
  write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
- write.csv(wordtitle,file=paste0("./Rdata/wordtitle",".csv"),row.names = F)
+ 
