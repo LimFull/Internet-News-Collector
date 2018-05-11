@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+/home/pi/Internet-News-Collector/OEnews/.metadata/.plugins/org.eclipse.jdt.core
