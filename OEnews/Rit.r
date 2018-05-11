@@ -59,7 +59,7 @@ library(stringr)
  
 
  news_content <- c()
- news_content <- c()
+ news_title <- c()
  for (i in 1:length(news_url)){
      html <- read_html(news_url[i])
      temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
