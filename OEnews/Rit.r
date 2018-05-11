@@ -64,7 +64,7 @@ library(stringr)
      html <- read_html(news_url[i])
      temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
      news_content <- c(news_content,temp)
-     temp <- repair_encoding(html_text(html_nodes(html,'h3articleTitle')),from = 'utf-8')
+     temp <- repair_encoding(html_text(html_nodes(html,'h3#articleTitle')),from = 'utf-8')
      news_title <- c(news_title, temp)
  }
   news <- cbind(url=news_url,content=unlist(news_content))
