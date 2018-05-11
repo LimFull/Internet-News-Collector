@@ -59,11 +59,13 @@ library(stringr)
  
 
  news_content <- c()
-
+ news_title <- c()
  for (i in 1:length(news_url)){
      html <- read_html(news_url[i])
      temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
      news_content <- c(news_content,temp)
+     temp <- repair_encoding(html_text(html_nodes(html,'h3#articleTitle')),from = 'utf-8')
+     news_title <- c(news_title, temp)
  }
   news <- cbind(url=news_url,content=unlist(news_content))
  news <- as.data.frame(news)
@@ -120,6 +122,7 @@ library(stringr)
  #많이 나온 단어의 링크 추출
  wordurl <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 url을 담을 벡터 생성
  wordspeech <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 언론사명을 담을 행렬 생성 
+ wordtitle <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 제목을 담을 행렬 생성 
  sortedword <- doc[rev(order(rowSums(doc))),]           #총 등장 횟수(행의 합)를 기준으로 정렬한 sortedword 벡터 생성
  for (i in 1:3){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
  k <- 0
@@ -127,7 +130,8 @@ library(stringr)
 if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기사에 포함될 경우 (0이 아닌 경우)
 k <- k+1
 wordurl[i,k] <- c(news_url[j])        # wordurl[i]에 j번째 기사의 url을 넣는다.
-wordspeech[i,k] <- c(speech[j])}}}    # wordurl[i]에 j번째 기사의 언론사명을 넣는다.
+wordspeech[i,k] <- c(speech[j])       # wordurl[i]에 j번째 기사의 언론사명을 넣는다.
+wordtitle[i,k] <- c(news_title[j])}}}    
 
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
@@ -147,6 +151,7 @@ wordurl
 #Rdata 폴더 생성
  dir.create("./Rdata",showWarnings = F) 
 #wordurl, keywords를 csv파일로 저장
- write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
- write.csv(wordspeech,file=paste0("./Rdata/wordspeech",".csv"),row.names = F)
- write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
+ write.csv(wordurl,file=paste0("./Rdata/SOCIETYwordurl",".csv"),row.names = F)
+ write.csv(wordspeech,file=paste0("./Rdata/SOCIETYwordspeech",".csv"),row.names = F)
+ write.csv(wordtitle,file=paste0("./Rdata/SOCIETYwordtitle",".csv"),row.names = F)
+ write.table(keywords,file=paste0("./Rdata/SOCIETYkeywords",".csv"),row.names = F,col.names = F)
