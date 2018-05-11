@@ -64,6 +64,7 @@ library(stringr)
      html <- read_html(news_url[i])
      temp <- repair_encoding(html_text(html_nodes(html,'#articleBodyContents')),from = 'utf-8')
      news_content <- c(news_content,temp)
+
  }
   news <- cbind(url=news_url,content=unlist(news_content))
  news <- as.data.frame(news)
@@ -122,6 +123,7 @@ if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기
 k <- k+1
 wordurl[i,k] <- c(news_url[j])        # wordurl[i]에 j번째 기사의 url을 넣는다.
 wordspeech[i,k] <- c(speech[j])}}}    # wordurl[i]에 j번째 기사의 언론사명을 넣는다.
+
 
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
