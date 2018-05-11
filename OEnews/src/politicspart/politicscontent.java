@@ -54,9 +54,12 @@ class panel extends JPanel
 {
 	ImageIcon bgimg = new ImageIcon("./img/barbackground.png");
 	Image img = bgimg.getImage();
+	ImageIcon cloudimg = new ImageIcon("cloudpolitics.png");
+	Image img2 = cloudimg.getImage();
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, this.getWidth(),this.getHeight(),this);
+		g.drawImage(img2, 400-(350/2), 80, 350, 350, this);
 	}
 }
