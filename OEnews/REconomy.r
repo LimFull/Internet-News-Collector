@@ -1,4 +1,7 @@
-f (!requireNamespace("rvest")){
+#!/usr/bin/Rscript --vanilla --slave 
+
+# rvest 패키지 필요 : 
+if (!requireNamespace("rvest")){
   install.packages("rvest")
 } 
 library(rvest)
