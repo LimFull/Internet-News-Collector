@@ -101,15 +101,18 @@ library(stringr)
  news_content<-gsub("기자\\(","",news_content)
  news_content<-gsub("기자=","",news_content)
  news_content<-gsub("기자 =","",news_content)
- news_content<-gsub("기자 [a-z]+","",news_content)
+ news_content<-gsub("기자 [A-z]+","",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
  news_content<-gsub("▲","",news_content)
  news_content<-gsub("◆","",news_content)
  news_content<-gsub("◇","",news_content)
+ news_content<-gsub("\\(서울","",news_content)
+ news_content<-gsub("연합뉴스\\)","",news_content)
  news_content<-gsub("cbs노컷뉴스","",news_content)
  news_content<-gsub("\\(www","",news_content)
+ news_content<-gsub("[A-z]*[0-9]*@","",news_content)
  news_content<-gsub("뉴스 가치나 화제성이 있다고 판단되는 사진 또는 영상을 뉴시스 사진영상부\\(n-photo@newsis\\.com, 02-721-7470\\)로 보내주시면 적극 반영하겠습니다","",news_content)
  news_content<-gsub("photo@newsis\\.com\\[사진 영상 제보받습니다\\] 공감언론 뉴시스가 독자 여러분의 소중한 제보를 기다립니다","",news_content)
 
@@ -124,7 +127,7 @@ library(stringr)
  wordspeech <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 언론사명을 담을 행렬 생성 
  wordtitle <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 제목을 담을 행렬 생성 
  sortedword <- doc[rev(order(rowSums(doc))),]           #총 등장 횟수(행의 합)를 기준으로 정렬한 sortedword 벡터 생성
- for (i in 1:3){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
+ for (i in 1:5){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
  k <- 0
  for (j in 1:20){                      # j : 몇 개의 기사를 검사할 것인지
 if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기사에 포함될 경우 (0이 아닌 경우)
@@ -151,6 +154,9 @@ wordurl
 #Rdata 폴더 생성
  dir.create("./Rdata",showWarnings = F) 
 #wordurl, keywords를 csv파일로 저장
+ write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
+ write.csv(wordspeech,file=paste0("./Rdata/wordspeech",".csv"),row.names = F)
+ write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
  write.csv(wordurl,file=paste0("./Rdata/SOCIETYwordurl",".csv"),row.names = F)
  write.csv(wordspeech,file=paste0("./Rdata/SOCIETYwordspeech",".csv"),row.names = F)
  write.csv(wordtitle,file=paste0("./Rdata/SOCIETYwordtitle",".csv"),row.names = F)

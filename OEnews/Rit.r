@@ -109,7 +109,7 @@ library(stringr)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("밝혔다","따라","하는","했다","만","대한","위한","hankyung","이번","할","에","그는","것이","것을","디지털데일리","또","중","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                            stopwords=c("월","전","개","오는","밝혔다","따라","하는","했다","만","대한","위한","hankyung","이번","할","에","그는","것이","것을","디지털데일리","또","중","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
 
@@ -118,7 +118,7 @@ library(stringr)
  wordspeech <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 언론사명을 담을 행렬 생성   
  wordtitle <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 제목을 담을 행렬 생성   
  sortedword <- doc[rev(order(rowSums(doc))),]           #총 등장 횟수(행의 합)를 기준으로 정렬한 sortedword 벡터 생성
- for (i in 1:3){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
+ for (i in 1:5){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
  k <- 0                                # url과 url 사이에 공백이 끼어들지 않도록 k를 이용해 url을 빽빽히 쌓는다. 새로운 행에 대한 루프를 돌 때마다 0으로 초기화 해준다.
  for (j in 1:20){                      # j : 몇 개의 기사를 검사할 것인지
 if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기사에 포함될 경우 (0이 아닌 경우)
@@ -126,7 +126,6 @@ k <- k+1
 wordurl[i,k] <- c(news_url[j])        # wordurl[i]에 j번째 기사의 url을 넣는다.
 wordspeech[i,k] <- c(speech[j])       # wordurl[i]에 j번째 기사의 언론사명을 넣는다.
 wordurl[i,k] <- c(news_url[j])}}}      # wordurl[i]에 j번째 기사의 제목을 넣는다.
-
 
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 

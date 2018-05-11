@@ -1,0 +1,14 @@
+doc2<-doc
+
+for (i in 1:nrow(doc2)){
+rownum<-0
+for (j in 1:20){
+if(doc2[i,j]!=0){
+rownum<-rownum+1
+}
+}
+doc2[i,1]<-rownum
+}
+
+sortedword2 <- doc2[rev(order(doc2[,1])),]
+
