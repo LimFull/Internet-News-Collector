@@ -49,12 +49,12 @@ library(stringr)
  html <- read_html(naver_url)
  temp <- c(unique(html_nodes(html,"#main_content .list_body .type06_headline a")%>%
                 html_attr('href')),unique(html_nodes(html,"#main_content .list_body .type06 a")%>%
-                                             html_attr('href')))
+                                             html_attr('href')),repair_encoding(html_text(html_nodes(html,'.writing')),from = 'utf-8'))
  temp
- 
+ speech<-temp[21:40] #언론사명 저장 
 
  news_url <-c()
- news_url <- c(news_url,temp)
+ news_url <- c(news_url,temp[1:20])
  news_url 
  
 
@@ -68,10 +68,6 @@ library(stringr)
   news <- cbind(url=news_url,content=unlist(news_content))
  news <- as.data.frame(news)
  news
- dir.create("./Rdata",showWarnings = F) 
-# Create Rdata Folder
- write.csv(news,file=paste0("./Rdata/news",".csv"),row.names = F)
-# Save as csv file
 
 
 
@@ -116,12 +112,16 @@ stopwords=c("오전","오후","","며","월","많","당","전","이날","대해"
  doc <- as.matrix(doc)
 
  #많이 나온 단어의 링크 추출
- wordurl <- c()
- sortedword <- doc[rev(order(rowSums(doc))),]
- for (i in 1:3){
- for (j in 1:20){
-if (sortedword[i,j] != 0) {
-wordurl[i] <- c(news_url[j])}}} 
+ wordurl <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 url을 담을 벡터 생성
+ wordspeech <- matrix(nrow=3, ncol=20)     #핫 키워드가 있는 기사의 언론사명을 담을 행렬 생성
+ sortedword <- doc[rev(order(rowSums(doc))),]           #총 등장 횟수(행의 합)를 기준으로 정렬한 sortedword 벡터 생성
+ for (i in 1:3){                       # i : 몇 개의 키워드의 url을 뽑을 것인지 
+ k <- 0
+ for (j in 1:20){                      # j : 몇 개의 기사를 검사할 것인지
+if (sortedword[i,j] != 0) {            # i번째 순위 키워드가 j번째 기사에 포함될 경우 (0이 아닌 경우)
+k <- k+1
+wordurl[i,k] <- c(news_url[j])        # wordurl[i]에 j번째 기사의 url을 넣는다.
+wordspeech[i,k] <- c(speech[j])}}}    # wordurl[i]에 j번째 기사의 언론사명을 넣는다.
 
  doc <- rowSums(doc) 
  doc <- doc[order(doc,decreasing=T)] 
@@ -135,3 +135,12 @@ wordurl[i] <- c(news_url[j])}}}
 
 #wordurl 확인
 wordurl
+
+#키워드를 따로 저장하기 위해 doc의 행 이름들을 keywords에 넣음
+ keywords <- rownames(doc)
+#Rdata 폴더 생성
+ dir.create("./Rdata",showWarnings = F) 
+#wordurl, keywords를 csv파일로 저장
+ write.csv(wordurl,file=paste0("./Rdata/wordurl",".csv"),row.names = F)
+ write.csv(wordspeech,file=paste0("./Rdata/wordspeech",".csv"),row.names = F)
+ write.table(keywords,file=paste0("./Rdata/keywords",".csv"),row.names = F,col.names = F)
