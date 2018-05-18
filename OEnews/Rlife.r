@@ -110,6 +110,13 @@ library(stringr)
  news_content<-gsub("☎","",news_content)
  news_content<-gsub("newsis\\.com","",news_content)
  news_content<-gsub("@yna","",news_content)
+ news_content<-gsub("\\[사진 영상 제보받습니다\\] 공감언론 뉴시스가 독자 여러분의 소중한 제보를 기다립니다\\. 뉴스 가치나 화제성이 있다고 판단되는 사진 또는 영상을 뉴시스 사진영상부","",news_content)
+ news_content<-gsub("로 보내주시면 적극 반영하겠습니다","",news_content)
+ news_content<-gsub("\\(서울","",news_content)
+ news_content<-gsub("연합뉴스\\)","",news_content)
+ news_content<-gsub("[a-z]*@","",news_content)
+ news_content<-gsub("【서울","",news_content)
+ news_content<-gsub("◇","",news_content)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
