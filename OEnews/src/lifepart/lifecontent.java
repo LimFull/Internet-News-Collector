@@ -1,5 +1,4 @@
 package lifepart;
-import itpart.itkeywords;
 
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 
