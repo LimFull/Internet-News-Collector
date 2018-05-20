@@ -15,7 +15,7 @@ public class economykeywords {
 	 public economykeywords(){
 	BufferedReader br = null;
 	try{
-		br = Files.newBufferedReader(Paths.get("Rdata/ITkeywords.csv")); //csv파일을 읽음  
+		br = Files.newBufferedReader(Paths.get("Rdata/ECONOMYkeywords.csv")); //csv파일을 읽음  
 		Charset.forName("UTF-8");  //UTF-8 형식
 		String line = "";
 		
