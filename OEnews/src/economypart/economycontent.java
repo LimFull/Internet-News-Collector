@@ -1,5 +1,7 @@
 package economypart;
 
+import itpart.itkeywords;
+
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 
 import main.mainframe;
@@ -26,6 +28,13 @@ public economycontent(){
 	backbtn.setContentAreaFilled(false);
 	backbtn.setFocusPainted(false);
 	
+	economykeywords economyk = new economykeywords();  //버튼에 키워드를 불러올 객체
+	JButton word1 = new JButton(economyk.getwords(0)); JButton word2 = new JButton(economyk.getwords(1)); 
+	JButton word3 = new JButton(economyk.getwords(2)); JButton word4 = new JButton(economyk.getwords(3)); 
+	JButton word5 = new JButton(economyk.getwords(4));
+	word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
+	word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
+	
 	ActionListener listener = new ActionListener(){
 		public void actionPerformed(ActionEvent e){
 			if (e.getActionCommand().equals(ACTION_COMMAND_BACK)){
@@ -38,7 +47,8 @@ public economycontent(){
 	backbtn.addActionListener(listener);
 	
 	a.add(backbtn);
-
+	a.add(word1); a.add(word2); a.add(word3); a.add(word4); a.add(word5); //키워드 버튼 추가
+	
 	this.add(a);
 	this.setSize(800,480);
 	this.setVisible(true);
