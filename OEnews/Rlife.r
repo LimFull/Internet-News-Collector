@@ -110,10 +110,17 @@ library(stringr)
  news_content<-gsub("☎","",news_content)
  news_content<-gsub("newsis\\.com","",news_content)
  news_content<-gsub("@yna","",news_content)
+ news_content<-gsub("\\[사진 영상 제보받습니다\\] 공감언론 뉴시스가 독자 여러분의 소중한 제보를 기다립니다\\. 뉴스 가치나 화제성이 있다고 판단되는 사진 또는 영상을 뉴시스 사진영상부","",news_content)
+ news_content<-gsub("로 보내주시면 적극 반영하겠습니다","",news_content)
+ news_content<-gsub("\\(서울","",news_content)
+ news_content<-gsub("연합뉴스\\)","",news_content)
+ news_content<-gsub("[a-z]*@","",news_content)
+ news_content<-gsub("【서울","",news_content)
+ news_content<-gsub("◇","",news_content)
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("밝혔다","등의","오는","이번","에서","중","당시","그런데","매우","없었다","있었다","또","∼","▲","월","위한","도","했다","게","오전","오후","쓴","옮김","제공","그가","그의","그","그는","거의","것이","것이다","더","자신의","할","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                            stopwords=c("있도록","하지만","밝혔다","등의","오는","이번","에서","중","당시","그런데","매우","없었다","있었다","또","∼","▲","월","위한","도","했다","게","오전","오후","쓴","옮김","제공","그가","그의","그","그는","거의","것이","것이다","더","자신의","할","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
 
