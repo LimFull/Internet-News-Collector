@@ -27,9 +27,12 @@ public class lifecontent extends JFrame {
 		backbtn.setFocusPainted(false);
 		
 		lifekeywords lifek = new lifekeywords();  //버튼에 키워드를 불러올 객체
-		JButton word1 = new JButton(lifek.getwords(0)); JButton word2 = new JButton(lifek.getwords(1)); 
-		JButton word3 = new JButton(lifek.getwords(2)); JButton word4 = new JButton(lifek.getwords(3)); 
-		JButton word5 = new JButton(lifek.getwords(4));
+		JButton word1 = new JButton(); JButton word2 = new JButton(); 
+		JButton word3 = new JButton(); JButton word4 = new JButton(); 
+		JButton word5 = new JButton();
+		word1.setText(lifek.getwords(0)); word2.setText(lifek.getwords(1));
+		word3.setText(lifek.getwords(2)); word4.setText(lifek.getwords(3));
+		word5.setText(lifek.getwords(4));
 		word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
 		word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
 		
