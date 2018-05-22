@@ -1,5 +1,4 @@
 package societypart;
-import itpart.itkeywords;
 
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 
@@ -31,9 +30,12 @@ public societycontent(){
 	backbtn.setFocusPainted(false);
 	
 	societykeywords societyk = new societykeywords();  //버튼에 키워드를 불러올 객체
-	JButton word1 = new JButton(societyk.getwords(0)); JButton word2 = new JButton(societyk.getwords(1)); 
-	JButton word3 = new JButton(societyk.getwords(2)); JButton word4 = new JButton(societyk.getwords(3)); 
-	JButton word5 = new JButton(societyk.getwords(4));
+	JButton word1 = new JButton(); JButton word2 = new JButton(); 
+	JButton word3 = new JButton(); JButton word4 = new JButton(); 
+	JButton word5 = new JButton();
+	word1.setText(societyk.getwords(0)); word2.setText(societyk.getwords(1));
+	word3.setText(societyk.getwords(2)); word4.setText(societyk.getwords(3));
+	word5.setText(societyk.getwords(4));
 	word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
 	word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
 	
