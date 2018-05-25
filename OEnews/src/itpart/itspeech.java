@@ -59,6 +59,36 @@ public class itspeech {
 		 slength[i-1] = k;
 	 }
  
+	 int sd[][] = new int[5][20];
+	 
+	  for (int k = 0; k<5; k++){  //5개 단어
+		  List<String> lstr = new ArrayList<String>();
+			lstr = ret.get(k+1);
+		  int num = 0; 
+		  for (int i = 0; i<slength[k]; i++){  //길이만큼 확인
+			  if (sd[k][i]==0){
+				  num++;
+				  sd[k][i]=num;
+				  if (i < slength[k]-1)  //끝이 아닐 경우에만 
+				  for(int j = i+1; j<slength[k]-i; j++){  //i번째 다음 순서부터 끝까지
+					  if (lstr.get(i).equals(lstr.get(j)))  //i번째와 j번째 내용이 같으면
+					  sd[k][j]=sd[k][i];  //같은 num값 부여
+				  }
+			  }
+		  }
+	  }
+	  
+	  //확인 (같은 글자의 배열 위치에는 같은 숫자가 나와야 함)
+	  System.out.println(sd[0][0]);
+	  System.out.println(sd[0][1]);
+	  System.out.println(sd[0][2]);
+	  System.out.println(sd[0][3]);
+	  System.out.println(sd[0][4]);
+	  System.out.println(sd[0][5]);
+	  System.out.println(sd[0][6]);
+	  System.out.println(sd[0][7]);
+	  System.out.println(lstr1);
+	 
 	 }
 }
 
