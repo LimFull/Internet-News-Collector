@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class Rmain {
 	public static void main(String[] args){
-		//mainframe mf = new mainframe();
-		itspeech its = new itspeech();
+		mainframe mf = new mainframe();
+		itspeech its = new itspeech(); //확인용 라인. (나중에 지워야 함)
 	}
 }

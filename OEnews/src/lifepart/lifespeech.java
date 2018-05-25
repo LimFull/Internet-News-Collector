@@ -1,4 +1,4 @@
-package itpart;
+package lifepart;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class itspeech {
+public class lifespeech {
 
 	List<List<String>> ret = new ArrayList<List<String>>(); //키워드를 저장할 문자열 리스트
 	
-	 public itspeech(){
+	 public lifespeech(){
 	BufferedReader br = null;
 	try{
-		br = Files.newBufferedReader(Paths.get("Rdata/ITwordspeech.csv")); //csv파일을 읽음  
+		br = Files.newBufferedReader(Paths.get("Rdata/LIFEwordspeech.csv")); //csv파일을 읽음  
 		Charset.forName("UTF-8");  //UTF-8 형식
 		String line = "";
 		
@@ -73,18 +73,7 @@ public class itspeech {
 		  }
 	  }
 	  
-	  //확인 (같은 글자의 배열 위치에는 같은 숫자가 나와야 함)
-	  System.out.println(sd[0][0]);
-	  System.out.println(sd[0][1]);
-	  System.out.println(sd[0][2]);
-	  System.out.println(sd[0][3]);
-	  System.out.println(sd[0][4]);
-	  System.out.println(sd[0][5]);
-	  System.out.println(sd[0][6]);
-	  System.out.println(sd[0][7]);
-	  List<String> lstr1 = new ArrayList<String>();
-	  lstr1 = ret.get(1);
-	  System.out.println(lstr1);
+	  
 	 
 	 }
 }
