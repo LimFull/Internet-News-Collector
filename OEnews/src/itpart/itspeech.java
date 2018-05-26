@@ -10,9 +10,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.JButton;
+
 public class itspeech {
 
 	List<List<String>> ret = new ArrayList<List<String>>(); //키워드를 저장할 문자열 리스트
+	int slength[] = new int[5];
+	int sclength[] = new int[5];
+	int sd[][] = new int[5][20];  //같은 언론사명임을 숫자로써 구분할 배열
+	int sc[][] = new int[5][20];  //sd에 구분된 번호의 언론사가 몇번씩 중복돼있는지 알게 해주는 배열
 	
 	 public itspeech(){
 	BufferedReader br = null;
@@ -43,7 +49,7 @@ public class itspeech {
 	}
 
 	
-	int slength[] = new int[5];
+	 
 	 for (int i = 1; i<6; i++){
 		 List<String> lstr = new ArrayList<String>();
 		 lstr = ret.get(i);
@@ -54,7 +60,11 @@ public class itspeech {
 		 slength[i-1] = k;
 	 }
  
-	 int sd[][] = new int[5][20];  //같은 언론사명임을 숫자로써 구분할 배열
+	
+	  
+	 for (int i = 0; i<5; i++){
+		 sclength[i]=slength[i];
+	 }
 	 
 	  for (int k = 0; k<5; k++){  //5개 단어
 		  List<String> lstr = new ArrayList<String>();
@@ -64,28 +74,54 @@ public class itspeech {
 			  if (sd[k][i]==0){
 				  num++;
 				  sd[k][i]=num;
+				  sc[k][num-1]=sc[k][num-1]+1;
 				  if (i < slength[k]-1)  //끝이 아닐 경우에만 
 				  for(int j = i+1; j<slength[k]-i; j++){  //i번째 다음 순서부터 끝까지
-					  if (lstr.get(i).equals(lstr.get(j)))  //i번째와 j번째 내용이 같으면
+					  if (lstr.get(i).equals(lstr.get(j))){  //i번째와 j번째 내용이 같으면
 					  sd[k][j]=sd[k][i];  //같은 num값 부여
+					  sc[k][num-1]=sc[k][num-1]+1;
+					  sclength[k]=sclength[k]-1;  //중복된만큼 총 길이를 줄임
+					  }
 				  }
 			  }
 		  }
 	  }
 	  
 	  //확인 (같은 글자의 배열 위치에는 같은 숫자가 나와야 함)
-	  System.out.println(sd[0][0]);
-	  System.out.println(sd[0][1]);
-	  System.out.println(sd[0][2]);
-	  System.out.println(sd[0][3]);
-	  System.out.println(sd[0][4]);
-	  System.out.println(sd[0][5]);
-	  System.out.println(sd[0][6]);
-	  System.out.println(sd[0][7]);
-	  List<String> lstr1 = new ArrayList<String>();
-	  lstr1 = ret.get(1);
-	  System.out.println(lstr1);
+	  System.out.println(sd[1][0]);
+	  System.out.println(sd[1][1]);
+	  System.out.println(sd[1][2]);
+	  System.out.println(sd[1][3]);
+	  System.out.println(sd[1][4]);
+	  System.out.println(sd[1][5]);
+	  System.out.println(sd[1][6]);
+	  System.out.println(sd[1][7]);
 	 
+	  // 확인용 라인들
+	  List<String> lstr2 = new ArrayList<String>();
+	  lstr2 = ret.get(2);
+	  System.out.println(lstr2);
+	  System.out.println(sc[1][0]);
+	  System.out.println(sc[1][1]);
+	  System.out.println(sc[1][2]);
+	  System.out.println(sc[1][3]);
+	  System.out.println(sc[1][4]);
+	  System.out.println(sc[1][5]);
+	  System.out.println(sclength[1]);
+	   
+	  
+	 }
+	 String getname(int word, int speech){
+		 int find=0;
+		 List<String> lstr1 = new ArrayList<String>();
+		 lstr1 = ret.get(word+1);
+		 for (int i = 0; i<slength[word]; i++){
+			 if (sd[word][i]==speech+1) {
+				 find=i;
+				 break;
+			 }
+		 }
+		 return lstr1.get(find).concat(" "+sc[word][speech]); 
 	 }
 }
 
