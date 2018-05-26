@@ -1,4 +1,5 @@
 package lifepart;
+
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 
 import main.mainframe;
@@ -25,6 +26,16 @@ public class lifecontent extends JFrame {
 		backbtn.setContentAreaFilled(false);
 		backbtn.setFocusPainted(false);
 		
+		lifekeywords lifek = new lifekeywords();  //버튼에 키워드를 불러올 객체
+		JButton word1 = new JButton(); JButton word2 = new JButton(); 
+		JButton word3 = new JButton(); JButton word4 = new JButton(); 
+		JButton word5 = new JButton();
+		word1.setText(lifek.getwords(0)); word2.setText(lifek.getwords(1));
+		word3.setText(lifek.getwords(2)); word4.setText(lifek.getwords(3));
+		word5.setText(lifek.getwords(4));
+		word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
+		word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
+		
 		ActionListener listener = new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if (e.getActionCommand().equals(ACTION_COMMAND_BACK)){
@@ -37,6 +48,7 @@ public class lifecontent extends JFrame {
 		backbtn.addActionListener(listener);
 		
 		a.add(backbtn);
+		a.add(word1); a.add(word2); a.add(word3); a.add(word4); a.add(word5); //키워드 버튼 추가
 		
 		this.add(a);
 		this.setSize(800,480);
@@ -48,9 +60,12 @@ class panel extends JPanel
 {
 	ImageIcon bgimg = new ImageIcon("./img/barbackground.png");
 	Image img = bgimg.getImage();
+	ImageIcon cloudimg = new ImageIcon("cloudlife.png");
+	Image img2 = cloudimg.getImage();
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, this.getWidth(),this.getHeight(),this);
+		g.drawImage(img2, 400-(350/2), 80, 350, 350, this);
 	}
 }
