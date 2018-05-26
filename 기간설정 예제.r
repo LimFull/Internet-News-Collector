@@ -1,5 +1,5 @@
 #!/usr/bin/Rscript --vanilla --slave 
-
+# forkonlp's N2H4 사용
 if(!requireNamespace("N2H4")){
   source("https://install-github.me/forkonlp/N2H4")
 }
