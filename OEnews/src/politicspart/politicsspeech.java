@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class societyspeech {
+public class politicsspeech {
 
 	List<List<String>> ret = new ArrayList<List<String>>(); //키워드를 저장할 문자열 리스트
 	int slength[] = new int[5];
