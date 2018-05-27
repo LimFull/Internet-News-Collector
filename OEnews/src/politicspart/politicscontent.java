@@ -16,7 +16,7 @@ public class politicscontent extends JFrame {
 	private static final String ACTION_COMMAND_THREE= "4";
 	private static final String ACTION_COMMAND_FOUR= "5";
 	private static final String ACTION_COMMAND_FIVE= "6";
-	lifespeech lifes = new lifespeech(); //언론사 수 셈
+	politicsspeech politicss = new politicsspeech(); //언론사 수 셈
 	panel a = new panel();
 	JButton[] sb = new JButton[7]; 
 	public politicscontent(){
