@@ -140,7 +140,6 @@ public itcontent(){
 	word4.addActionListener(listener);
 	word5.setActionCommand(ACTION_COMMAND_FIVE);
 	word5.addActionListener(listener);
-	//a.add(sb[0]);
 	a.add(backbtn);
 	a.add(word1); a.add(word2); a.add(word3); a.add(word4); a.add(word5); //키워드 버튼 추가
 	this.add(a);

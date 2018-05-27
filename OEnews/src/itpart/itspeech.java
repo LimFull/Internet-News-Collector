@@ -76,7 +76,7 @@ public class itspeech {
 				  sd[k][i]=num;
 				  sc[k][num-1]=sc[k][num-1]+1;
 				  if (i < slength[k]-1)  //끝이 아닐 경우에만 
-				  for(int j = i+1; j<slength[k]-i; j++){  //i번째 다음 순서부터 끝까지
+				  for(int j = i+1; j<slength[k]; j++){  //i번째 다음 순서부터 끝까지
 					  if (lstr.get(i).equals(lstr.get(j))){  //i번째와 j번째 내용이 같으면
 					  sd[k][j]=sd[k][i];  //같은 num값 부여
 					  sc[k][num-1]=sc[k][num-1]+1;
@@ -86,28 +86,6 @@ public class itspeech {
 			  }
 		  }
 	  }
-	  
-	  //확인 (같은 글자의 배열 위치에는 같은 숫자가 나와야 함)
-	  System.out.println(sd[1][0]);
-	  System.out.println(sd[1][1]);
-	  System.out.println(sd[1][2]);
-	  System.out.println(sd[1][3]);
-	  System.out.println(sd[1][4]);
-	  System.out.println(sd[1][5]);
-	  System.out.println(sd[1][6]);
-	  System.out.println(sd[1][7]);
-	 
-	  // 확인용 라인들
-	  List<String> lstr2 = new ArrayList<String>();
-	  lstr2 = ret.get(2);
-	  System.out.println(lstr2);
-	  System.out.println(sc[1][0]);
-	  System.out.println(sc[1][1]);
-	  System.out.println(sc[1][2]);
-	  System.out.println(sc[1][3]);
-	  System.out.println(sc[1][4]);
-	  System.out.println(sc[1][5]);
-	  System.out.println(sclength[1]);
 	   
 	  
 	 }
