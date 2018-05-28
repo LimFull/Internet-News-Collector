@@ -105,13 +105,15 @@ library(stringr)
  news_content<-gsub("▶.+","",news_content)
  news_content<-gsub("♥.+","",news_content)
  news_content<-gsub("될+","",news_content)
+ news_content<-gsub("+","",news_content)
+
 
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
 stopwords=c("오전","오후","","며","월","많","당","전","이날","대해","한다","때","있","은","는","이","가","의","위해","것",">고","com","있다","photo","및","을","▲","를","수","일","등을","등","newsis","뉴시
 스","사진","영상","뉴스","▶","디지털타임스","지디넷코리아","통해","바로가기","것
-으로","년","있는","지난","말했다","이를","한","기자","또","고","", "flash")))
+으로","년","있는","지난","말했다","이를","한","기자","또","고","", "flash","【")))
 
  doc <- as.matrix(doc)
 
