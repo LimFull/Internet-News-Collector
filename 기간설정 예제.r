@@ -19,7 +19,7 @@ endDate<-"20160102"
 
 # 파일 이름을 지정하면 한 파일에 계속 저장합니다.
 # "" 로 두면 페이지 별로 이름을 자동으로 생성하여 저장합니다.
-save_path <- "practice2.csv"
+save_path <- "./practice/practice3.csv"
 
 strTime<-Sys.time()
 midTime<-Sys.time()
@@ -76,3 +76,6 @@ for (date in strDate:endDate){
   }
 }
 
+politicsrecord <- read.csv('practice/practice3.csv',header = FALSE, stringsAsFactors = TRUE) # 저장한 csv파일 불러오기
+
+precordbody <- data.frame(politicsrecord$V6) // 내용부분만 추출
