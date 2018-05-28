@@ -78,9 +78,9 @@ for (date in strDate:endDate){
 
 politicsrecord <- read.csv('practice/practice3.csv',header = FALSE, stringsAsFactors = TRUE)
 
-precordbody<- data.frame(politicsrecord$V6)
+precordbody<- data.frame(politicsrecord$V6) # 기사 내용부분만 추출
 
-write.table(precordbody, 'precordbody.txt') 
+write.table(precordbody, 'precordbody.txt')  # txt형태로 저장
 
 
 
@@ -89,10 +89,24 @@ if (!requireNamespace("KoNLP")){
 } 
 library(KoNLP)
 
+
+
+
+
+if (!requireNamespace("wordcloud")){
+  install.packages("wordcloud")
+} 
+library(wordcloud)
+
+library(stringr)
+
+
+
+
 useSejongDic()
-txt<-readLines('precordbody.txt')
-data2<-sapply(txt,extractNoun,USE.NAMES = F)
-head(unlist(txt),30)
+txt<-readLines('precordbody.txt') #txt파일 읽어들임
+data2<-sapply(txt,extractNoun,USE.NAMES = F) # 한글명사만 추출
+head(unlist(txt),30) 
 data3<-unlist(data2)
 data3<-Filter(function(x){nchar(x)>=2},data3)
 data3<-gsub("\\d+","",data3)
@@ -108,15 +122,3 @@ nrow(rev)
 wordcount<-table(rev)
 aa<-head(sort(wordcount,decreasing = T),5000) 
 write.csv(aa,"extraction_word.csv")
-
-
-aa
-
-
-
-
-
-
-
-
-
