@@ -1,12 +1,7 @@
 #!/usr/bin/Rscript --vanilla --slave 
-# forkonlp's N2H4 사용
-if(!requireNamespace("N2H4")){
-  source("https://install-github.me/forkonlp/N2H4")
-}
+# forkonlp's N2H4 사용 WITH MIT LISENCE
+source('https://install-github.me/forkonlp/N2H4')
 library(N2H4)
-
-
-
 
 # 메인 카테고리 id 가져옵니다.
 cate<-getMainCategory()
@@ -20,7 +15,11 @@ tscate<-subCate$sid2[1:2]
 
 # 목표 날짜를 지정합니다.
 strDate<-"20160101"
-endDate<-"20160101"
+endDate<-"20160102"
+
+# 파일 이름을 지정하면 한 파일에 계속 저장합니다.
+# "" 로 두면 페이지 별로 이름을 자동으로 생성하여 저장합니다.
+save_path <- "./practice/practice3.csv"
 
 strTime<-Sys.time()
 midTime<-Sys.time()
@@ -58,14 +57,25 @@ for (date in strDate:endDate){
             print(paste0("try again: ",newslink))
           }
           if(class(tem$datetime)[1]=="POSIXct"){
-            newsData<-rbind(newsData,tem)
+            newsData<-rbind(newsData, tem)
           }
         }
         
-        dir.create("./data",showWarnings=F)
-        # 가져온 뉴스들(보통 한 페이지에 20개의 뉴스가 있습니다.)을 csv 형태로 저장합니다.
-        write.csv(newsData, file=paste0("./data/news",sid1,"_",sid2,"_",date,"_",pageNum,".csv"),row.names = F)
-      }
+        dir.create("./practice",showWarnings=F)
+        if(save_path==""){
+          # 가져온 뉴스들(보통 한 페이지에 20개의 뉴스가 있습니다.)을 csv 형태로 저장합니다.
+          write.csv(newsData, file=paste0("./practice/news",sid1,"_",sid2,"_",date,"_",pageNum,".csv"),row.names = F)
+        } else {
+          if (!file.exists(save_path)){
+            write.csv(newsData, file=save_path, row.names = F)
+          }
+          write.table(newsData, file=save_path, append=T, row.names = F, col.names = F, sep=",")
+        }
+      } 
     }
   }
 }
+
+politicsrecord <- read.csv('practice/practice3.csv',header = FALSE, stringsAsFactors = TRUE) # 저장한 csv파일 불러오기
+
+precordbody <- data.frame(politicsrecord$V6) // 내용부분만 추출
