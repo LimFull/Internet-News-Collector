@@ -106,6 +106,8 @@ library(stringr)
  news_content<-gsub("♥.+","",news_content)
  news_content<-gsub("될+","",news_content)
  news_content<-gsub("+","",news_content)
+ news_content<-gsub("","",news_content)
+
 
 
 
