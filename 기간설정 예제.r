@@ -132,10 +132,10 @@ write.csv(aa,"./polrecord/polextraction_word.csv") # csv파일로 추출된 단�
 polkeywords1<-as.data.frame(aa[1:20]) 
 polkeywords1
 
-polkeywords<-polkeywords1[,"rev"]
+polkeywords<-polkeywords1[,"rev"] # 단어의 열만 추출하여 저장
 
 
-write.table(polkeywords,file = paste0("./polrecord/polkeywords",".csv"),row.names = F,col.names = F)
+write.table(polkeywords,file = paste0("./polrecord/polkeywords",".csv"),row.names = F,col.names = F) # 테이블 형태의 csv파일로 행열, 이름 제외후 
 
 
 
