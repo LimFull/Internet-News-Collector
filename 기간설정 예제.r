@@ -19,7 +19,7 @@ endDate<-"20160102"
 
 # 파일 이름을 지정하면 한 파일에 계속 저장합니다.
 # "" 로 두면 페이지 별로 이름을 자동으로 생성하여 저장합니다.
-save_path <- "./practice/practice3.csv"
+save_path <- "./polrecord/pol3.csv"
 
 strTime<-Sys.time()
 midTime<-Sys.time()
@@ -61,10 +61,10 @@ for (date in strDate:endDate){
           }
         }
         
-        dir.create("./practice",showWarnings=F)
+        dir.create("./polrecord",showWarnings=F)
         if(save_path==""){
           # 가져온 뉴스들(보통 한 페이지에 20개의 뉴스가 있습니다.)을 csv 형태로 저장합니다.
-          write.csv(newsData, file=paste0("./practice/news",sid1,"_",sid2,"_",date,"_",pageNum,".csv"),row.names = F)
+          write.csv(newsData, file=paste0("./polrecord/news",sid1,"_",sid2,"_",date,"_",pageNum,".csv"),row.names = F)
         } else {
           if (!file.exists(save_path)){
             write.csv(newsData, file=save_path, row.names = F)
@@ -76,11 +76,11 @@ for (date in strDate:endDate){
   }
 }
 
-politicsrecord <- read.csv('practice/practice3.csv',header = FALSE, stringsAsFactors = TRUE)
+politicsrecord <- read.csv('polrecord/pol3.csv',header = FALSE, stringsAsFactors = TRUE)
 
-precordbody<- data.frame(politicsrecord$V6) # 기사 내용부분만 추출
+precordbody<- data.frame(politicsrecord$V6)
 
-write.table(precordbody, 'precordbody.txt')  # txt형태로 저장
+write.table(precordbody, './polrecord/polrecordbody.txt') 
 
 
 
@@ -102,11 +102,18 @@ library(stringr)
 
 
 
+library(RColorBrewer)
+
+
+
+
+
+
 
 useSejongDic()
-txt<-readLines('precordbody.txt') #txt파일 읽어들임
-data2<-sapply(txt,extractNoun,USE.NAMES = F) # 한글명사만 추출
-head(unlist(txt),30) 
+txt<-readLines('./polrecord/polrecordbody.txt')
+data2<-sapply(txt,extractNoun,USE.NAMES = F)
+head(unlist(txt),30)
 data3<-unlist(data2)
 data3<-Filter(function(x){nchar(x)>=2},data3)
 data3<-gsub("\\d+","",data3)
@@ -116,9 +123,23 @@ data3<-gsub("-","",data3)
 data3<-gsub("kr","",data3)
 data3<-gsub("뉴스","",data3)
 
-write(unlist(data3),"extraction.txt")
-rev<-read.table("extraction.txt")
+write(unlist(data3),"./polrecord/polextraction.txt")
+rev<-read.table("./polrecord/polextraction.txt")
 nrow(rev)
 wordcount<-table(rev)
-aa<-head(sort(wordcount,decreasing = T),5000) 
-write.csv(aa,"extraction_word.csv")
+aa<-head(sort(wordcount,decreasing = T),20) 
+write.csv(aa,"./polrecord/polextraction_word.csv")
+
+
+aa
+
+
+
+
+palete <- brewer.pal(9,"Set1")
+wordcloud(names(aa),freq = aa, min.freq=7, max.words=20, random.order=FALSE,rot.per=0.5,colors=brewer.pal(5,"Dark2"), scale=c(6,2))
+savePlot("./polrecord/polwordcloud.png",type = "png") 
+
+
+
+
