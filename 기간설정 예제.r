@@ -76,15 +76,15 @@ for (date in strDate:endDate){
   }
 }
 
-politicsrecord <- read.csv('polrecord/pol3.csv',header = FALSE, stringsAsFactors = TRUE)
+politicsrecord <- read.csv('polrecord/pol3.csv',header = FALSE, stringsAsFactors = TRUE) # 저장한 기사의 내용들을 저장
 
-precordbody<- data.frame(politicsrecord$V6)
+precordbody<- data.frame(politicsrecord$V6) # 데이터 프레임 형태로 변환
 
-write.table(precordbody, './polrecord/polrecordbody.txt') 
+write.table(precordbody, './polrecord/polrecordbody.txt') # txt 파일로 변환하여 저장
 
 
 
-if (!requireNamespace("KoNLP")){
+if (!requireNamespace("KoNLP")){ # 세종사전 사용하기 위한 라이브러리
   install.packages("KoNLP")
 } 
 library(KoNLP)
@@ -93,16 +93,16 @@ library(KoNLP)
 
 
 
-if (!requireNamespace("wordcloud")){
+if (!requireNamespace("wordcloud")){ # 워드클라우드 사용하기 위한 라이브러리
   install.packages("wordcloud")
 } 
 library(wordcloud)
 
-library(stringr)
+library(stringr) # 불필요 단어 필링 하기 위한 라이브러리
 
 
 
-library(RColorBrewer)
+library(RColorBrewer) # 워드클라우드 관련 다양한 색상 사용 위한 라이브러리
 
 
 
@@ -111,11 +111,11 @@ library(RColorBrewer)
 
 
 useSejongDic()
-txt<-readLines('./polrecord/polrecordbody.txt')
-data2<-sapply(txt,extractNoun,USE.NAMES = F)
-head(unlist(txt),30)
-data3<-unlist(data2)
-data3<-Filter(function(x){nchar(x)>=2},data3)
+txt<-readLines('./polrecord/polrecordbody.txt') # txt 파일화된 내용 불러들임
+data2<-sapply(txt,extractNoun,USE.NAMES = F) # 단어 형태소 별로 추출
+head(unlist(txt),30) # 추출된 단어들의 30 페이지 분량 배열 작성
+data3<-unlist(data2) 
+data3<-Filter(function(x){nchar(x)>=2},data3) # 필터링
 data3<-gsub("\\d+","",data3)
 data3<-str_replace_all(data3,"[^[:alpha:]]","")
 data3<-gsub(" ","",data3)
@@ -123,25 +123,26 @@ data3<-gsub("-","",data3)
 data3<-gsub("kr","",data3)
 data3<-gsub("뉴스","",data3)
 
-write(unlist(data3),"./polrecord/polextraction.txt")
-rev<-read.table("./polrecord/polextraction.txt")
+write(unlist(data3),"./polrecord/polextraction.txt") # 추출된 내용들 txt파일로 저장
+rev<-read.table("./polrecord/polextraction.txt") # 테이블 형태로 불러들임
 nrow(rev)
-wordcount<-table(rev)
-aa<-head(sort(wordcount,decreasing = T),20) 
-polkeywords1<-as.data.frame(aa[1:20])
+wordcount<-table(rev) # 워드 카운트에 단어 수 세서 저장
+aa<-head(sort(wordcount,decreasing = T),20)  # 상위 20개 단어 추출하여 내림차순 저장
+write.csv(aa,"./polrecord/polextraction_word.csv") # csv파일로 추출된 단어 저장
+polkeywords1<-as.data.frame(aa[1:20]) 
 polkeywords1
 
 polkeywords<-polkeywords1[,"rev"]
-polkeywords
+
 
 write.table(polkeywords,file = paste0("./polrecord/polkeywords",".csv"),row.names = F,col.names = F)
 
 
 
+# 워드클라우드 생성
 palete <- brewer.pal(9,"Set1")
 wordcloud(names(aa),freq = aa, min.freq=7, max.words=20, random.order=FALSE,rot.per=0.5,colors=brewer.pal(5,"Dark2"), scale=c(6,2))
-savePlot("./polrecord/polwordcloud.png",type = "png") 
-
+savePlot("./polrecord/polwordcloud.png",type = "png")  # png
 
 
 
