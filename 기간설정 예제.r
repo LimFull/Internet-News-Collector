@@ -129,8 +129,11 @@ nrow(rev)
 wordcount<-table(rev)
 aa<-head(sort(wordcount,decreasing = T),20) 
 write.csv(aa,"./polrecord/polextraction_word.csv")
+polkeywords1<-as.data.frame(aa[1:20])
+polkeywords1
 
 
+write.table(polkeywords1,file = paste0("./polrecord/polkeywords",".csv"),row.names = F)
 aa
 
 
