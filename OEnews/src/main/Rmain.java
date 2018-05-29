@@ -5,14 +5,15 @@ import lifepart.Rlife;
 import societypart.Rsociety;
 import politicspart.RPolitics;
 import economypart.REconomy;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 //import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 //import java.awt.*;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+ import lifepart.lifespeech;
+
 
 public class Rmain {
 	public static void main(String[] args){
 		mainframe mf = new mainframe();
-		//mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
