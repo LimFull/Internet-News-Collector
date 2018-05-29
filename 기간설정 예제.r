@@ -132,16 +132,17 @@ write.csv(aa,"./polrecord/polextraction_word.csv") # csv파일로 추출된 단�
 polkeywords1<-as.data.frame(aa[1:20]) 
 polkeywords1
 
+polkeywords<-polkeywords1[,"rev"] # 단어의 열만 추출하여 저장
 
-write.table(polkeywords1,file = paste0("./polrecord/polkeywords",".csv"),row.names = F)
-aa
+
+write.table(polkeywords,file = paste0("./polrecord/polkeywords",".csv"),row.names = F,col.names = F) # 테이블 형태의 csv파일로 행열, 이름 제외후 
 
 
 
 # 워드클라우드 생성
 palete <- brewer.pal(9,"Set1")
 wordcloud(names(aa),freq = aa, min.freq=7, max.words=20, random.order=FALSE,rot.per=0.5,colors=brewer.pal(5,"Dark2"), scale=c(6,2))
-savePlot("./polrecord/polwordcloud.png",type = "png")  # png 
+savePlot("./polrecord/polwordcloud.png",type = "png")  # png
 
 
 
