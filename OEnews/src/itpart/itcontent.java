@@ -17,9 +17,17 @@ public class itcontent extends JFrame {
 	private static final String ACTION_COMMAND_THREE= "4";
 	private static final String ACTION_COMMAND_FOUR= "5";
 	private static final String ACTION_COMMAND_FIVE= "6";
+	private static final String ACTION_SPEECH_ONE= "11";
+	private static final String ACTION_SPEECH_TWO= "22";
+	private static final String ACTION_SPEECH_THREE= "33";
+	private static final String ACTION_SPEECH_FOUR= "44";
+	private static final String ACTION_SPEECH_FIVE= "55";
+	private static final String ACTION_SPEECH_SIX= "66";
+	private static final String ACTION_SPEECH_SEVEN= "77";
 	itspeech its = new itspeech(); //언론사 수 셈
 	panel a = new panel();
 	JButton[] sb = new JButton[7]; 
+	int word;
 	
 public itcontent(){
 	setUndecorated(true);
@@ -61,6 +69,7 @@ public itcontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_ONE)){
 				int i=0; 
+				word = 0;
 				while(i<its.sclength[0]){
 					sb[i].setVisible(true);
 					sb[i].setText(its.getname(0, i));
@@ -74,6 +83,7 @@ public itcontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_TWO)){
 				int i=0; 
+				word = 1;
 				while(i<its.sclength[1]){
 					sb[i].setVisible(true);
 					sb[i].setText(its.getname(1, i));
@@ -87,6 +97,7 @@ public itcontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_THREE)){
 				int i=0; 
+				word = 2;
 				while(i<its.sclength[2]){
 					sb[i].setVisible(true);
 					sb[i].setText(its.getname(2, i));
@@ -100,6 +111,7 @@ public itcontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_FOUR)){
 				int i=0; 
+				word = 3;
 				while(i<its.sclength[3]){
 					sb[i].setVisible(true);
 					sb[i].setText(its.getname(3, i));
@@ -113,6 +125,7 @@ public itcontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_FIVE)){
 				int i=0; 
+				word = 4;
 				while(i<its.sclength[4]){
 					sb[i].setVisible(true);
 					sb[i].setText(its.getname(4, i));
@@ -124,11 +137,14 @@ public itcontent(){
 					i++;
 				}
 			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_ONE)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 0));
+			}
 			}
 	};
 	
 	backbtn.setActionCommand(ACTION_COMMAND_BACK);
-	backbtn.addActionListener(listener);
 	backbtn.addActionListener(listener);
 	word1.setActionCommand(ACTION_COMMAND_ONE);
 	word1.addActionListener(listener);
@@ -140,6 +156,20 @@ public itcontent(){
 	word4.addActionListener(listener);
 	word5.setActionCommand(ACTION_COMMAND_FIVE);
 	word5.addActionListener(listener);
+	sb[0].setActionCommand(ACTION_SPEECH_ONE);
+	sb[0].addActionListener(listener);
+	sb[1].setActionCommand(ACTION_SPEECH_ONE);
+	sb[1].addActionListener(listener);
+	sb[2].setActionCommand(ACTION_SPEECH_ONE);
+	sb[2].addActionListener(listener);
+	sb[3].setActionCommand(ACTION_SPEECH_ONE);
+	sb[3].addActionListener(listener);
+	sb[4].setActionCommand(ACTION_SPEECH_ONE);
+	sb[4].addActionListener(listener);
+	sb[5].setActionCommand(ACTION_SPEECH_ONE);
+	sb[5].addActionListener(listener);
+	sb[6].setActionCommand(ACTION_SPEECH_ONE);
+	sb[6].addActionListener(listener);
 	a.add(backbtn);
 	a.add(word1); a.add(word2); a.add(word3); a.add(word4); a.add(word5); //키워드 버튼 추가
 	this.add(a);

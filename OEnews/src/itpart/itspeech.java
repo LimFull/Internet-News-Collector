@@ -101,5 +101,16 @@ public class itspeech {
 		 }
 		 return lstr1.get(find).concat(" "+sc[word][speech]); 
 	 }
+	 int[] gettitlenumber(int word,int speech){
+		 int find[] = new int[20];
+		 int k = 0;
+		  for (int i = 0; i<slength[word]; i++){
+			  if (sd[word][i]==speech+1){
+				  find[k]=i;
+				   k++;
+			  }
+		  }
+		 return find;
+	 }
 }
 
