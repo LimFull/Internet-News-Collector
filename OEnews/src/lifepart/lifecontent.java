@@ -1,6 +1,8 @@
 package lifepart;
 
 
+import itpart.ittitle;
+
 import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 
 import main.mainframe;
@@ -16,9 +18,18 @@ public class lifecontent extends JFrame {
 	private static final String ACTION_COMMAND_THREE= "4";
 	private static final String ACTION_COMMAND_FOUR= "5";
 	private static final String ACTION_COMMAND_FIVE= "6";
+	private static final String ACTION_SPEECH_ONE= "11";
+	private static final String ACTION_SPEECH_TWO= "22";
+	private static final String ACTION_SPEECH_THREE= "33";
+	private static final String ACTION_SPEECH_FOUR= "44";
+	private static final String ACTION_SPEECH_FIVE= "55";
+	private static final String ACTION_SPEECH_SIX= "66";
+	private static final String ACTION_SPEECH_SEVEN= "77";
 	lifespeech lifes = new lifespeech(); //언론사 수 셈
 	panel a = new panel();
 	JButton[] sb = new JButton[7]; 
+	int word;
+	
 	public lifecontent(){
 		setUndecorated(true);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -58,6 +69,7 @@ public class lifecontent extends JFrame {
 				}
 				if (e.getActionCommand().equals(ACTION_COMMAND_ONE)){
 					int i=0; 
+					word = 0;
 					while(i<lifes.sclength[0]){
 						sb[i].setVisible(true);
 						sb[i].setText(lifes.getname(0, i));
@@ -71,6 +83,7 @@ public class lifecontent extends JFrame {
 				}
 				if (e.getActionCommand().equals(ACTION_COMMAND_TWO)){
 					int i=0; 
+					word = 1;
 					while(i<lifes.sclength[1]){
 						sb[i].setVisible(true);
 						sb[i].setText(lifes.getname(1, i));
@@ -84,6 +97,7 @@ public class lifecontent extends JFrame {
 				}
 				if (e.getActionCommand().equals(ACTION_COMMAND_THREE)){
 					int i=0; 
+					word = 2;
 					while(i<lifes.sclength[2]){
 						sb[i].setVisible(true);
 						sb[i].setText(lifes.getname(2, i));
@@ -97,6 +111,7 @@ public class lifecontent extends JFrame {
 				}
 				if (e.getActionCommand().equals(ACTION_COMMAND_FOUR)){
 					int i=0; 
+					word = 3;
 					while(i<lifes.sclength[3]){
 						sb[i].setVisible(true);
 						sb[i].setText(lifes.getname(3, i));
@@ -110,6 +125,7 @@ public class lifecontent extends JFrame {
 				}
 				if (e.getActionCommand().equals(ACTION_COMMAND_FIVE)){
 					int i=0; 
+					word = 4;
 					while(i<lifes.sclength[4]){
 						sb[i].setVisible(true);
 						sb[i].setText(lifes.getname(4, i));
@@ -120,6 +136,34 @@ public class lifecontent extends JFrame {
 						sb[i].setVisible(false);
 						i++;
 					}
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_ONE)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 0));
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_TWO)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 1));
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_THREE)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 2));
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_FOUR)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 3));
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_FIVE)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 4));
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_SIX)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 5));
+				}
+				if (e.getActionCommand().equals(ACTION_SPEECH_SEVEN)){
+					int a[] = new int[20];
+					lifetitle lifet = new lifetitle(word, lifes.gettitlenumber(word, 6));
 				}
 			}
 		};
@@ -135,6 +179,20 @@ public class lifecontent extends JFrame {
 		word4.addActionListener(listener);
 		word5.setActionCommand(ACTION_COMMAND_FIVE);
 		word5.addActionListener(listener);
+		sb[0].setActionCommand(ACTION_SPEECH_ONE);
+		sb[0].addActionListener(listener);
+		sb[1].setActionCommand(ACTION_SPEECH_TWO);
+		sb[1].addActionListener(listener);
+		sb[2].setActionCommand(ACTION_SPEECH_THREE);
+		sb[2].addActionListener(listener);
+		sb[3].setActionCommand(ACTION_SPEECH_FOUR);
+		sb[3].addActionListener(listener);
+		sb[4].setActionCommand(ACTION_SPEECH_FIVE);
+		sb[4].addActionListener(listener);
+		sb[5].setActionCommand(ACTION_SPEECH_SIX);
+		sb[5].addActionListener(listener);
+		sb[6].setActionCommand(ACTION_SPEECH_SEVEN);
+		sb[6].addActionListener(listener);
 		
 		a.add(backbtn);
 		a.add(word1); a.add(word2); a.add(word3); a.add(word4); a.add(word5); //키워드 버튼 추가
