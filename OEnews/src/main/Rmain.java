@@ -19,6 +19,7 @@ public class Rmain {
 		//Rsociety rsociety = new Rsociety();
 		//RPolitics rpolitics = new RPolitics();
 		//REconomy reconomy = new REconomy();
+		Rall rall = new Rall();
 		mainframe mf = new mainframe();
 	}
 }
