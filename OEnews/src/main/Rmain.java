@@ -14,11 +14,11 @@ import java.io.IOException;
 
 public class Rmain {
 	public static void main(String[] args){
-		Rit rit = new Rit();
-		Rlife rlife = new Rlife();
-		Rsociety rsociety = new Rsociety();
-		RPolitics rpolitics = new RPolitics();
-		REconomy reconomy = new REconomy();
+		//Rit rit = new Rit();
+		//Rlife rlife = new Rlife();
+		//Rsociety rsociety = new Rsociety();
+		//RPolitics rpolitics = new RPolitics();
+		//REconomy reconomy = new REconomy();
 		mainframe mf = new mainframe();
 	}
 }
