@@ -141,6 +141,30 @@ public itcontent(){
 				int a[] = new int[20];
 				ittitle itt = new ittitle(word, its.gettitlenumber(word, 0));
 			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_TWO)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 1));
+			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_THREE)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 2));
+			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_FOUR)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 3));
+			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_FIVE)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 4));
+			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_SIX)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 5));
+			}
+			if (e.getActionCommand().equals(ACTION_SPEECH_SEVEN)){
+				int a[] = new int[20];
+				ittitle itt = new ittitle(word, its.gettitlenumber(word, 6));
+			}
 			}
 	};
 	
@@ -158,17 +182,17 @@ public itcontent(){
 	word5.addActionListener(listener);
 	sb[0].setActionCommand(ACTION_SPEECH_ONE);
 	sb[0].addActionListener(listener);
-	sb[1].setActionCommand(ACTION_SPEECH_ONE);
+	sb[1].setActionCommand(ACTION_SPEECH_TWO);
 	sb[1].addActionListener(listener);
-	sb[2].setActionCommand(ACTION_SPEECH_ONE);
+	sb[2].setActionCommand(ACTION_SPEECH_THREE);
 	sb[2].addActionListener(listener);
-	sb[3].setActionCommand(ACTION_SPEECH_ONE);
+	sb[3].setActionCommand(ACTION_SPEECH_FOUR);
 	sb[3].addActionListener(listener);
-	sb[4].setActionCommand(ACTION_SPEECH_ONE);
+	sb[4].setActionCommand(ACTION_SPEECH_FIVE);
 	sb[4].addActionListener(listener);
-	sb[5].setActionCommand(ACTION_SPEECH_ONE);
+	sb[5].setActionCommand(ACTION_SPEECH_SIX);
 	sb[5].addActionListener(listener);
-	sb[6].setActionCommand(ACTION_SPEECH_ONE);
+	sb[6].setActionCommand(ACTION_SPEECH_SEVEN);
 	sb[6].addActionListener(listener);
 	a.add(backbtn);
 	a.add(word1); a.add(word2); a.add(word3); a.add(word4); a.add(word5); //키워드 버튼 추가
