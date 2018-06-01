@@ -104,10 +104,12 @@ news_content<-gsub("기자 =","",news_content)
 news_content<-gsub("기자 [a-z]+","",news_content)
 news_content<-gsub("▶.+","",news_content)
 news_content<-gsub("♥.+","",news_content)
+news_content<-gsub("㎡+","",news_content)
+
 
 doc <- Corpus(VectorSource(news_content))
 doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                           stopwords=c("【서울","newsis","총","이번","현재","시","월","에","높은","기록했다","기록하며","위를","위치했다","밝혔다","등의","중","최근","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                           stopwords=c("따라","이에","◆","【서울","newsis","총","이번","현재","시","월","에","높은","기록했다","기록하며","위를","위치했다","밝혔다","등의","중","최근","로","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","디지털타임스","지디넷코리아","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
 doc <- as.matrix(doc)
 

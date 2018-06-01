@@ -50,6 +50,7 @@ public class politicsspeech {
 
 	
 	 
+
 	 for (int i = 1; i<6; i++){
 		 List<String> lstr = new ArrayList<String>();
 		 lstr = ret.get(i);
@@ -111,5 +112,17 @@ public class politicsspeech {
 			  }
 		  }
 		 return find;
+	 }
+	 public String getname(int word, int speech){
+		 int find=0;
+		 List<String> lstr1 = new ArrayList<String>();
+		 lstr1 = ret.get(word+1);
+		 for (int i = 0; i<slength[word]; i++){
+			 if (sd[word][i]==speech+1) {
+				 find=i;
+				 break;
+			 }
+		 }
+		 return lstr1.get(find).concat(" "+sc[word][speech]); 
 	 }
 }

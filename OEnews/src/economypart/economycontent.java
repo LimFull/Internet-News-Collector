@@ -95,11 +95,30 @@ public economycontent(){
 	sb[i].setVisible(false);
 	}
 	
-	ActionListener listener = new ActionListener(){
-		public void actionPerformed(ActionEvent e){
-			if (e.getActionCommand().equals(ACTION_COMMAND_BACK)){
-				mainframe mf = new mainframe();
-				dispose();
+		a.setLayout(null);
+		JButton backbtn = new JButton(new ImageIcon("./img/backbtn.png"));
+		backbtn.setPressedIcon(new ImageIcon("./img/pressedbackbtn.png"));
+		backbtn.setSize(45,45);
+		backbtn.setVisible(true);
+		backbtn.setLocation(15,43);
+		backbtn.setBorderPainted(false);  //버튼 외곽선
+		backbtn.setContentAreaFilled(false);
+		backbtn.setFocusPainted(false);
+		
+		economykeywords economyk = new economykeywords();  //버튼에 키워드를 불러올 객체
+		JButton word1 = new JButton(); JButton word2 = new JButton(); 
+		JButton word3 = new JButton(); JButton word4 = new JButton(); 
+		JButton word5 = new JButton();
+		word1.setText(economyk.getwords(0)); word2.setText(economyk.getwords(1));
+		word3.setText(economyk.getwords(2)); word4.setText(economyk.getwords(3));
+		word5.setText(economyk.getwords(4));
+		word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
+		word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
+		for (int i = 0; i<7; i++){
+			a.add(sb[i] = new JButton(""));
+			sb[i].setSize(120,45);
+			sb[i].setLocation(625,i*50+95);
+			sb[i].setVisible(false);
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_ONE)){
 				word1.setIcon(new ImageIcon("./img/simplebuttonpush.png"));
@@ -294,8 +313,8 @@ public economycontent(){
 	}
 	*/
 }
-}
 
+}
 class panel extends JPanel
 {
 	ImageIcon bgimg = new ImageIcon("./img/barbackground.png");

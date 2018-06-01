@@ -5,7 +5,9 @@ import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7
 import main.mainframe;
 
 
+import javax.swing.*; //프로젝트 실행환경 - JavaSE-1.7 
 
+import main.mainframe;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -294,7 +296,6 @@ public politicscontent(){
 	*/
 }
 }
-
 class panel extends JPanel
 {
 	ImageIcon bgimg = new ImageIcon("./img/barbackground.png");

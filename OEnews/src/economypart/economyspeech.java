@@ -19,7 +19,7 @@ public class economyspeech {
 	int sclength[] = new int[5];
 	int sd[][] = new int[5][20];  //같은 언론사명임을 숫자로써 구분할 배열
 	int sc[][] = new int[5][20];  //sd에 구분된 번호의 언론사가 몇번씩 중복돼있는지 알게 해주는 배열
-	
+
 	 public economyspeech(){
 	BufferedReader br = null;
 	try{
@@ -59,7 +59,7 @@ public class economyspeech {
 		 }
 		 slength[i-1] = k;
 	 }
- 
+
 	
 	  
 	 for (int i = 0; i<5; i++){
@@ -111,5 +111,18 @@ public class economyspeech {
 			  }
 		  }
 		 return find;
+
+	 }
+	 public String getname(int word, int speech){
+		 int find=0;
+		 List<String> lstr1 = new ArrayList<String>();
+		 lstr1 = ret.get(word+1);
+		 for (int i = 0; i<slength[word]; i++){
+			 if (sd[word][i]==speech+1) {
+				 find=i;
+				 break;
+			 }
+		 }
+		 return lstr1.get(find).concat(" "+sc[word][speech]); 
 	 }
 }
