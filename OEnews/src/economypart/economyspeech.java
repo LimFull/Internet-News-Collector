@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.JButton;
+
 public class economyspeech {
 
 	List<List<String>> ret = new ArrayList<List<String>>(); //키워드를 저장할 문자열 리스트
@@ -17,6 +19,7 @@ public class economyspeech {
 	int sclength[] = new int[5];
 	int sd[][] = new int[5][20];  //같은 언론사명임을 숫자로써 구분할 배열
 	int sc[][] = new int[5][20];  //sd에 구분된 번호의 언론사가 몇번씩 중복돼있는지 알게 해주는 배열
+
 	 public economyspeech(){
 	BufferedReader br = null;
 	try{
@@ -46,6 +49,7 @@ public class economyspeech {
 	}
 
 	
+	 
 	 for (int i = 1; i<6; i++){
 		 List<String> lstr = new ArrayList<String>();
 		 lstr = ret.get(i);
@@ -55,7 +59,9 @@ public class economyspeech {
 		 }
 		 slength[i-1] = k;
 	 }
- 
+
+	
+	  
 	 for (int i = 0; i<5; i++){
 		 sclength[i]=slength[i];
 	 }
@@ -80,11 +86,10 @@ public class economyspeech {
 			  }
 		  }
 	  }
+	   
 	  
- 
-	 
 	 }
-	 public String getname(int word, int speech){
+	 String getname(int word, int speech){
 		 int find=0;
 		 List<String> lstr1 = new ArrayList<String>();
 		 lstr1 = ret.get(word+1);
@@ -96,5 +101,16 @@ public class economyspeech {
 		 }
 		 return lstr1.get(find).concat(" "+sc[word][speech]); 
 	 }
-}
+	 int[] gettitlenumber(int word,int speech){
+		 int find[] = new int[20];
+		 int k = 0;
+		  for (int i = 0; i<slength[word]; i++){
+			  if (sd[word][i]==speech+1){
+				  find[k]=i;
+				   k++;
+			  }
+		  }
+		 return find;
 
+	 }
+}
