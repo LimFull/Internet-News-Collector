@@ -66,8 +66,8 @@ public class ittitle extends JFrame {
 		
 		for (int i = 0; i<6; i++){  //버튼 만들기
 			a.add(sb[i] = new JButton(""));
-			sb[i].setSize(300,40);
-			sb[i].setLocation((700-300)/2,i*55+20);
+			sb[i].setSize(550,40);
+			sb[i].setLocation((700-550)/2,i*55+20);
 			sb[i].setVisible(false);
 			}
 		

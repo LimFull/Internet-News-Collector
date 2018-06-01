@@ -28,7 +28,11 @@ public class itcontent extends JFrame {
 	panel a = new panel();
 	JButton[] sb = new JButton[7]; 
 	int word;
-	
+	JButton word1 = new JButton(new ImageIcon("./img/simplebutton.png"));
+	JButton word2 = new JButton(new ImageIcon("./img/simplebutton.png"));
+	JButton word3 = new JButton(new ImageIcon("./img/simplebutton.png")); 
+	JButton word4 = new JButton(new ImageIcon("./img/simplebutton.png")); 
+	JButton word5 = new JButton(new ImageIcon("./img/simplebutton.png"));
 public itcontent(){
 	setUndecorated(true);
 	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -46,9 +50,37 @@ public itcontent(){
 	
 	itkeywords itk = new itkeywords();  //버튼에 키워드를 불러올 객체
 	
-	JButton word1 = new JButton(); JButton word2 = new JButton(); 
-	JButton word3 = new JButton(); JButton word4 = new JButton(); 
-	JButton word5 = new JButton();
+	   
+	word1.setBorderPainted(false);
+	word1.setContentAreaFilled(false);
+	word1.setFocusPainted(false);
+	word1.setHorizontalTextPosition(JButton.CENTER);
+	word1.setVerticalTextPosition(JButton.CENTER);
+	word1.setForeground(Color.BLACK);
+	word2.setBorderPainted(false);
+	word2.setContentAreaFilled(false);
+	word2.setFocusPainted(false);
+	word2.setHorizontalTextPosition(JButton.CENTER);
+	word2.setVerticalTextPosition(JButton.CENTER);
+	word2.setForeground(Color.BLACK);
+	word3.setBorderPainted(false);
+	word3.setContentAreaFilled(false);
+	word3.setFocusPainted(false);
+	word3.setHorizontalTextPosition(JButton.CENTER);
+	word3.setVerticalTextPosition(JButton.CENTER);
+	word3.setForeground(Color.BLACK);
+	word4.setBorderPainted(false);
+	word4.setContentAreaFilled(false);
+	word4.setFocusPainted(false);
+	word4.setHorizontalTextPosition(JButton.CENTER);
+	word4.setVerticalTextPosition(JButton.CENTER);
+	word4.setForeground(Color.BLACK);
+	word5.setBorderPainted(false);
+	word5.setContentAreaFilled(false);
+	word5.setFocusPainted(false);
+	word5.setHorizontalTextPosition(JButton.CENTER);
+	word5.setVerticalTextPosition(JButton.CENTER);
+	word5.setForeground(Color.BLACK);
 	word1.setText(itk.getwords(0)); word2.setText(itk.getwords(1));
 	word3.setText(itk.getwords(2)); word4.setText(itk.getwords(3));
 	word5.setText(itk.getwords(4));
@@ -68,6 +100,16 @@ public itcontent(){
 				dispose();
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_ONE)){
+				word1.setIcon(new ImageIcon("./img/simplebuttonpush.png"));
+				word2.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word3.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word4.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word5.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word1.setForeground(Color.WHITE);
+				word2.setForeground(Color.BLACK);
+				word3.setForeground(Color.BLACK);
+				word4.setForeground(Color.BLACK);
+				word5.setForeground(Color.BLACK);
 				int i=0; 
 				word = 0;
 				while(i<its.sclength[0]){
@@ -82,6 +124,16 @@ public itcontent(){
 				}
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_TWO)){
+				word1.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word2.setIcon(new ImageIcon("./img/simplebuttonpush.png"));
+				word3.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word4.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word5.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word1.setForeground(Color.BLACK);
+				word2.setForeground(Color.WHITE);
+				word3.setForeground(Color.BLACK);
+				word4.setForeground(Color.BLACK);
+				word5.setForeground(Color.BLACK);
 				int i=0; 
 				word = 1;
 				while(i<its.sclength[1]){
@@ -96,6 +148,16 @@ public itcontent(){
 				}
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_THREE)){
+				word1.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word2.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word3.setIcon(new ImageIcon("./img/simplebuttonpush.png"));
+				word4.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word5.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word1.setForeground(Color.BLACK);
+				word2.setForeground(Color.BLACK);
+				word3.setForeground(Color.WHITE);
+				word4.setForeground(Color.BLACK);
+				word5.setForeground(Color.BLACK);
 				int i=0; 
 				word = 2;
 				while(i<its.sclength[2]){
@@ -110,6 +172,16 @@ public itcontent(){
 				}
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_FOUR)){
+				word1.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word2.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word3.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word4.setIcon(new ImageIcon("./img/simplebuttonpush.png"));
+				word5.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word1.setForeground(Color.BLACK);
+				word2.setForeground(Color.BLACK);
+				word3.setForeground(Color.BLACK);
+				word4.setForeground(Color.WHITE);
+				word5.setForeground(Color.BLACK);
 				int i=0; 
 				word = 3;
 				while(i<its.sclength[3]){
@@ -124,6 +196,16 @@ public itcontent(){
 				}
 			}
 			if (e.getActionCommand().equals(ACTION_COMMAND_FIVE)){
+				word1.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word2.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word3.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word4.setIcon(new ImageIcon("./img/simplebutton.png"));
+				word5.setIcon(new ImageIcon("./img/simplebuttonpush.png"));
+				word1.setForeground(Color.BLACK);
+				word2.setForeground(Color.BLACK);
+				word3.setForeground(Color.BLACK);
+				word4.setForeground(Color.BLACK);
+				word5.setForeground(Color.WHITE);
 				int i=0; 
 				word = 4;
 				while(i<its.sclength[4]){
