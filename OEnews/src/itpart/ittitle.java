@@ -20,12 +20,18 @@ import main.mainframe;
 
 public class ittitle extends JFrame {
 	private static final String ACTION_COMMAND_BACK= "1";
+	private static final String ACTION_COMMAND_ONE= "11";
+	private static final String ACTION_COMMAND_TWO= "22";
+	private static final String ACTION_COMMAND_THREE= "33";
+	private static final String ACTION_COMMAND_FOUR= "44";
+	private static final String ACTION_COMMAND_FIVE= "55";
+	private static final String ACTION_COMMAND_SIX= "66";
 	List<List<String>> ret = new ArrayList<List<String>>(); // 제목을 저장할 문자열 리스트
 	titlepanel a = new titlepanel();
 	JButton[] sb = new JButton[10];
+	iturl itu = new iturl();
 	
-	public ittitle(int word, int[] titlenumber){
-		this.setAlwaysOnTop(true);
+	public ittitle(final int word,final int[] titlenumber){
 		this.setUndecorated(true);
 		a.setLayout(null);
 		
@@ -91,8 +97,39 @@ public class ittitle extends JFrame {
 				if (e.getActionCommand().equals(ACTION_COMMAND_BACK)){
 					dispose();
 				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_ONE)){
+					itu.openurl(word, 0, titlenumber);
+				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_TWO)){
+					itu.openurl(word, 1, titlenumber);
+				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_THREE)){
+					itu.openurl(word, 2, titlenumber);
+				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_FOUR)){
+					itu.openurl(word, 3, titlenumber);
+				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_FIVE)){
+					itu.openurl(word, 4, titlenumber);
+				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_SIX)){
+					itu.openurl(word, 5, titlenumber);
+				}
 			}
 		};
+	
+		sb[0].setActionCommand(ACTION_COMMAND_ONE);
+		sb[0].addActionListener(listener);
+		sb[1].setActionCommand(ACTION_COMMAND_TWO);
+		sb[1].addActionListener(listener);
+		sb[2].setActionCommand(ACTION_COMMAND_THREE);
+		sb[2].addActionListener(listener);
+		sb[3].setActionCommand(ACTION_COMMAND_FOUR);
+		sb[3].addActionListener(listener);
+		sb[4].setActionCommand(ACTION_COMMAND_FIVE);
+		sb[4].addActionListener(listener);
+		sb[5].setActionCommand(ACTION_COMMAND_SIX);
+		sb[5].addActionListener(listener);
 		backbtn.setActionCommand(ACTION_COMMAND_BACK);
 		backbtn.addActionListener(listener);
 		a.add(backbtn);
@@ -116,4 +153,3 @@ class titlepanel extends JPanel
 		g.drawImage(img, 0, 0, this.getWidth(),this.getHeight(),this);
 	}
 }
-
