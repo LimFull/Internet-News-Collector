@@ -30,7 +30,7 @@ public politicsurl(){
 			ret.add(tmplist);	// 한 줄씩 ret에 추가
 		}
 	
-	}catch(FileNotFoundException e){ // 
+	}catch(FileNotFoundException e){ 
 		e.printStackTrace();
 	}catch(IOException e){
 		e.printStackTrace();
@@ -50,7 +50,7 @@ public void openurl(int word, int title, int[] titlenumber){
 	lstr = ret.get(word+1); // csv 파일 내 열이름 제외한 url 값 불러들이기
 	try{
 		java.net.URI uri = new java.net.URI(lstr.get(titlenumber[title]).replace("\"", "")); // uri 객체 생성 후 url 저
-		desktop.browse(uri);
+		desktop.browse(uri); // 브라우저에 uri 연결
 	}
 	catch(IOException _e){
 		System.err.println(_e.getMessage());
