@@ -1,14 +1,14 @@
-package itpart; //import org.rosuda.JTI.* 빼놓음
+package main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Rit {
-	public Rit(){
+public class Rall {
+	public Rall(){
 		try{
-			Process p = Runtime.getRuntime().exec("make IT");
+			Process p = Runtime.getRuntime().exec("make ALL");
 			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String line = null;
+			String line = null;			
 			while((line = br.readLine()) != null){
 				System.out.println(line);
 			}

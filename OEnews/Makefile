@@ -1,3 +1,6 @@
+ALL:
+	chmod u+x Rall.r
+	sudo ./Rall.r
 IT:
 	chmod u+x Rit.r
 	sudo ./Rit.r
