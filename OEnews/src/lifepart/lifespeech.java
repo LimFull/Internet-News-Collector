@@ -84,7 +84,7 @@ public class lifespeech {
  
 	 
 	 }
-	 public String getname(int word, int speech){
+	 public String getname(int word, int speech){  //언론사 버튼에 들어갈 텍스트를 리턴하는 함수
 		 int find=0;
 		 List<String> lstr1 = new ArrayList<String>();
 		 lstr1 = ret.get(word+1);
@@ -94,9 +94,9 @@ public class lifespeech {
 				 break;
 			 }
 		 }
-		 return lstr1.get(find).concat(" "+sc[word][speech]); 
+		 return lstr1.get(find).concat(" "+sc[word][speech]);   // ex)이데일리 3
 	 }
-	 int[] gettitlenumber(int word,int speech){
+	 int[] gettitlenumber(int word,int speech){  // 특정 단어의 특정 언론사의 번호를 리턴
 		 int find[] = new int[20];
 		 int k = 0;
 		  for (int i = 0; i<slength[word]; i++){
