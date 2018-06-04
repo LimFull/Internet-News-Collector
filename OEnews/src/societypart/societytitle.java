@@ -79,7 +79,7 @@ public class societytitle extends JFrame {
 			}
 		
 		for (int i = 0 ; i<tlength ; i++){
-			sb[i].setText(lstr.get(titlenumber[i])+"\"");
+			sb[i].setText(lstr.get(titlenumber[i])+"\"");  // 제목 수만큼 버튼 텍스트 설정
 			sb[i].setVisible(true);
 			if (i==5) break;
 		}
