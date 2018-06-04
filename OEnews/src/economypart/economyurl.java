@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class economyurl {
 	List<List<String>> ret = new ArrayList<List<String>>(); // url을 저장할 문자열 리스트
-	java.awt.Desktop desktop = java.awt.Desktop.getDesktop(); // 해당 OS 지원 브라우저 설정
+	java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
 public economyurl(){
 	BufferedReader br = null;
 	try{
@@ -24,9 +24,9 @@ public economyurl(){
 		String line = "";
 		
 		while((line = br.readLine()) != null){
-			List<String> tmplist = new ArrayList<String>(); // tmplist 객체 생성
-			String array[] = line.split(","); // 콤마(,)를 기준으로 나눔
-			tmplist = Arrays.asList(array); //tmplist에 저장
+			List<String> tmplist = new ArrayList<String>();
+			String array[] = line.split(",");
+			tmplist = Arrays.asList(array);
 			ret.add(tmplist);	// 한 줄씩 ret에 추가
 		}
 	
@@ -46,11 +46,11 @@ public economyurl(){
 	
 }
 public void openurl(int word, int title, int[] titlenumber){
-	List<String> lstr = new ArrayList<String>(); // lstr 리스트 생성
-	lstr = ret.get(word+1); // 열 이름 제외한 값 받아옴
+	List<String> lstr = new ArrayList<String>();
+	lstr = ret.get(word+1);
 	try{
-		java.net.URI uri = new java.net.URI(lstr.get(titlenumber[title]).replace("\"", "")); // 해당 url 연결할 객체 생성
-		desktop.browse(uri); // url을 브라우저에 
+		java.net.URI uri = new java.net.URI(lstr.get(titlenumber[title]).replace("\"", ""));
+		desktop.browse(uri);
 	}
 	catch(IOException _e){
 		System.err.println(_e.getMessage());
