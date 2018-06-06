@@ -295,7 +295,7 @@ public economycontent(){
 
 class panel extends JPanel
 {
-	ImageIcon bgimg = new ImageIcon("./img/barbackground.png");
+	ImageIcon bgimg = new ImageIcon("./img/cloudbackground.png");
 	Image img = bgimg.getImage();
 	ImageIcon cloudimg = new ImageIcon("cloudeconomy.png");
 	Image img2 = cloudimg.getImage();
