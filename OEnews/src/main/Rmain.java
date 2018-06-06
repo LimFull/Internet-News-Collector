@@ -14,14 +14,7 @@ import lifepart.lifeurl;
 
 public class Rmain {
 	public static void main(String[] args){
-		//Rit rit = new Rit();
-		//Rlife rlife = new Rlife();
-		//Rsociety rsociety = new Rsociety();
-		//RPolitics rpolitics = new RPolitics();
-		//REconomy reconomy = new REconomy();
 		//Rall rall = new Rall();
 		mainframe mf = new mainframe();
-		//lifeurl lifeu = new lifeurl();
-		//lifeu.openurl(0, 0);
 	}
 }
