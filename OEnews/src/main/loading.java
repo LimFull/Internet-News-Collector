@@ -19,7 +19,6 @@ public class loading extends JFrame {
 		this.setLocation(148, 173);
 		this.setVisible(true);
 		this.add(a);
-		//Rall rall = new Rall();
 		while(true){
 			if (mainframe.complete == 1) {
 				mainframe.complete = 0;

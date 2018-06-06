@@ -296,7 +296,7 @@ hotkeyword2.setForeground(Color.WHITE);
 	this.add(a);
 	this.setSize(800,480); //라즈베리파이 7인치 터치 스크린 해상도 
 	this.setVisible(true);
-	//gd.setFullScreenWindow(this);  //전체
+
 	
 	itbtn.setActionCommand(ACTION_COMMAND_IT); //리스너가 버튼을 구분할 때 사용함
 	economybtn.setActionCommand(ACTION_COMMAND_ECONOMY);
