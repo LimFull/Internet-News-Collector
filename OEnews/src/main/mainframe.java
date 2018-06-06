@@ -270,8 +270,8 @@ else if (cate ==5)
 //ret2.get(bignum)------------------------------------------------------------------------
 JLabel hotkeyword = new JLabel();
 JLabel hotkeyword2 = new JLabel();
-//hotkeyword.setText("가장 중요한 키워드는 \"" + strcate + "\" 카테고리의");
-hotkeyword.setText("가장 중요한 키워드는 \"" + "생활/문화" + "\" 카테고리의");
+hotkeyword.setText("가장 중요한 키워드는 \"" + strcate + "\" 카테고리의");
+//hotkeyword.setText("가장 중요한 키워드는 \"" + "생활/문화" + "\" 카테고리의");
 hotkeyword2.setText(ret2.get(bignum) + " 입니다.");
 hotkeyword.setSize(400,100);
 hotkeyword2.setSize(400,100);
