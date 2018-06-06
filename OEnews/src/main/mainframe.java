@@ -230,7 +230,7 @@ try{
 		cate = 4;
 	}
 	else {
-		br = Files.newBufferedReader(Paths.get("Rdata/POLITICSITkeywords.csv"));
+		br = Files.newBufferedReader(Paths.get("Rdata/POLITICSkeywords.csv"));
 		cate = 5;
 	}
 
