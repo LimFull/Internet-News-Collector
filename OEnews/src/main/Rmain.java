@@ -14,7 +14,7 @@ import lifepart.lifeurl;
 
 public class Rmain {
 	public static void main(String[] args){
-		Rall rall = new Rall();
+		//Rall rall = new Rall();
 		mainframe mf = new mainframe();
 	}
 }

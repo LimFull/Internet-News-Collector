@@ -226,7 +226,7 @@ try{
 		cate = 3;
 	}
 	else if (bignum <20) {
-		br = Files.newBufferedReader(Paths.get("Rdata/ECONOMYITkeywords.csv"));
+		br = Files.newBufferedReader(Paths.get("Rdata/ECONOMYkeywords.csv"));
 		cate = 4;
 	}
 	else {
