@@ -88,10 +88,16 @@ public societycontent(){
 	word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
 	word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
 	for (int i = 0; i<7; i++){
-	a.add(sb[i] = new JButton(""));
-	sb[i].setSize(120,45);
-	sb[i].setLocation(625,i*50+95);
-	sb[i].setVisible(false);
+		a.add(sb[i] = new JButton(new ImageIcon("./img/speechbutton.png")));
+		sb[i].setPressedIcon(new ImageIcon("./img/speechbuttonpush.png"));
+		sb[i].setSize(120,45);
+		sb[i].setLocation(625,i*50+95);
+		sb[i].setVisible(false);
+		sb[i].setBorderPainted(false);
+		sb[i].setContentAreaFilled(false);
+		sb[i].setFocusPainted(false);
+		sb[i].setHorizontalTextPosition(JButton.CENTER);
+		sb[i].setVerticalTextPosition(JButton.CENTER);
 	}
 	
 	ActionListener listener = new ActionListener(){

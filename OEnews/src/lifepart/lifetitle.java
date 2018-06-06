@@ -71,10 +71,16 @@ public class lifetitle extends JFrame {
 		lstr = ret.get(word+1);
 		
 		for (int i = 0; i<6; i++){  //버튼 만들기
-			a.add(sb[i] = new JButton(""));
-			sb[i].setSize(550,40);
+			a.add(sb[i] = new JButton(new ImageIcon("./img/titlebutton.png")));
+			sb[i].setPressedIcon(new ImageIcon("./img/titlebuttonpush.png"));
+			sb[i].setSize(551,41);
 			sb[i].setLocation((700-550)/2,i*55+20);
 			sb[i].setVisible(false);
+			sb[i].setBorderPainted(false);
+			sb[i].setContentAreaFilled(false);
+			sb[i].setFocusPainted(false);
+			sb[i].setHorizontalTextPosition(JButton.CENTER);
+			sb[i].setVerticalTextPosition(JButton.CENTER);
 			}
 		
 		for (int i = 0 ; i<tlength ; i++){
