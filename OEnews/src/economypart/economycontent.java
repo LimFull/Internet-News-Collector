@@ -229,7 +229,7 @@ public economycontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_SPEECH_ONE)){
 				int a[] = new int[20];
-				economytitle economyt = new economytitle(word, economys.gettitlenumber(word, 0));
+				economytitle economyt = new economytitle(word, economys.gettitlenumber(word, 0)); // 특정 키워드의 특정 번호의 언론사의 배열 위치를 넘겨줌
 			}
 			if (e.getActionCommand().equals(ACTION_SPEECH_TWO)){
 				int a[] = new int[20];
