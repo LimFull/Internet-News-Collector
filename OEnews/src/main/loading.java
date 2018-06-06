@@ -21,7 +21,10 @@ public class loading extends JFrame {
 		this.add(a);
 		//Rall rall = new Rall();
 		while(true){
-			if (mainframe.complete == 1) dispose();
+			if (mainframe.complete == 1) {
+				mainframe mf = new mainframe();
+				dispose();
+			}
 		}
 	
 	}
