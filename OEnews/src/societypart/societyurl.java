@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class societyurl {
 	List<List<String>> ret = new ArrayList<List<String>>(); // url을 저장할 문자열 리스트
-	java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+	java.awt.Desktop desktop = java.awt.Desktop.getDesktop(); // OS가 지원하는 브라우저에 연결할 객체 생성
 public societyurl(){
 	BufferedReader br = null;
 	try{
@@ -24,9 +24,9 @@ public societyurl(){
 		String line = "";
 		
 		while((line = br.readLine()) != null){
-			List<String> tmplist = new ArrayList<String>();
-			String array[] = line.split(",");
-			tmplist = Arrays.asList(array);
+			List<String> tmplist = new ArrayList<String>(); // 분리된 URL을 저장할 문자열 리스트
+			String array[] = line.split(","); // 콤마(,) 단위로 분리
+			tmplist = Arrays.asList(array); //tmplist에 저장
 			ret.add(tmplist);	// 한 줄씩 ret에 추가
 		}
 	
@@ -46,11 +46,11 @@ public societyurl(){
 	
 }
 public void openurl(int word, int title, int[] titlenumber){
-	List<String> lstr = new ArrayList<String>();
-	lstr = ret.get(word+1);
+	List<String> lstr = new ArrayList<String>(); // URL 순수값 받을 lstr객체생성
+	lstr = ret.get(word+1); // 열 제목을 제외한 순수한 URL 값 저장
 	try{
-		java.net.URI uri = new java.net.URI(lstr.get(titlenumber[title]).replace("\"", ""));
-		desktop.browse(uri);
+		java.net.URI uri = new java.net.URI(lstr.get(titlenumber[title]).replace("\"", "")); // 제목 순서에 맞는 URL 저장
+		desktop.browse(uri); // 브라우저 
 	}
 	catch(IOException _e){
 		System.err.println(_e.getMessage());

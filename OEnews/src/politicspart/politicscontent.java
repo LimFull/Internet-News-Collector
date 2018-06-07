@@ -90,10 +90,16 @@ public politicscontent(){
 	word1.setSize(100,45); word2.setSize(100,45); word3.setSize(100,45); word4.setSize(100,45); word5.setSize(100,45);
 	word1.setLocation(65,95); word2.setLocation(65,162); word3.setLocation(65,229); word4.setLocation(65,296); word5.setLocation(65,363);
 	for (int i = 0; i<7; i++){
-	a.add(sb[i] = new JButton(""));
-	sb[i].setSize(120,45);
-	sb[i].setLocation(625,i*50+95);
-	sb[i].setVisible(false);
+		a.add(sb[i] = new JButton(new ImageIcon("./img/speechbutton.png")));
+		sb[i].setPressedIcon(new ImageIcon("./img/speechbuttonpush.png"));
+		sb[i].setSize(120,45);
+		sb[i].setLocation(625,i*50+95);
+		sb[i].setVisible(false);
+		sb[i].setBorderPainted(false);
+		sb[i].setContentAreaFilled(false);
+		sb[i].setFocusPainted(false);
+		sb[i].setHorizontalTextPosition(JButton.CENTER);
+		sb[i].setVerticalTextPosition(JButton.CENTER);
 	}
 	
 	ActionListener listener = new ActionListener(){
@@ -224,7 +230,7 @@ public politicscontent(){
 			}
 			if (e.getActionCommand().equals(ACTION_SPEECH_ONE)){
 				int a[] = new int[20];
-				politicstitle politicst = new politicstitle(word, politicss.gettitlenumber(word, 0));
+				politicstitle politicst = new politicstitle(word, politicss.gettitlenumber(word, 0));  // 특정 키워드의 특정 번호의 언론사의 배열 위치를 넘겨줌
 			}
 			if (e.getActionCommand().equals(ACTION_SPEECH_TWO)){
 				int a[] = new int[20];
@@ -298,7 +304,7 @@ public politicscontent(){
 }
 class panel extends JPanel
 {
-	ImageIcon bgimg = new ImageIcon("./img/barbackground.png");
+	ImageIcon bgimg = new ImageIcon("./img/cloudbackground.png");
 	Image img = bgimg.getImage();
 	ImageIcon cloudimg = new ImageIcon("cloudpolitics.png");
 	Image img2 = cloudimg.getImage();

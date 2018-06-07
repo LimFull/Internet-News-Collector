@@ -26,6 +26,8 @@ public class ittitle extends JFrame {
 	private static final String ACTION_COMMAND_FOUR= "44";
 	private static final String ACTION_COMMAND_FIVE= "55";
 	private static final String ACTION_COMMAND_SIX= "66";
+	private static final String ACTION_COMMAND_SEVEN= "77";
+	private static final String ACTION_COMMAND_EIGHT= "88";
 	List<List<String>> ret = new ArrayList<List<String>>(); // 제목을 저장할 문자열 리스트
 	titlepanel a = new titlepanel();
 	JButton[] sb = new JButton[10];
@@ -70,17 +72,23 @@ public class ittitle extends JFrame {
  		List<String> lstr = new ArrayList<String>();
 		lstr = ret.get(word+1);
 		
-		for (int i = 0; i<6; i++){  //버튼 만들기
-			a.add(sb[i] = new JButton(""));
-			sb[i].setSize(550,40);
-			sb[i].setLocation((700-550)/2,i*55+20);
+		for (int i = 0; i<8; i++){  //버튼 만들기
+			a.add(sb[i] = new JButton(new ImageIcon("./img/titlebutton.png")));
+			sb[i].setPressedIcon(new ImageIcon("./img/titlebuttonpush.png"));
+			sb[i].setSize(551,41);
+			sb[i].setLocation((800-550)/2,i*55+40);
 			sb[i].setVisible(false);
+			sb[i].setBorderPainted(false);
+			sb[i].setContentAreaFilled(false);
+			sb[i].setFocusPainted(false);
+			sb[i].setHorizontalTextPosition(JButton.CENTER);
+			sb[i].setVerticalTextPosition(JButton.CENTER);
 			}
 		
 		for (int i = 0 ; i<tlength ; i++){
 			sb[i].setText(lstr.get(titlenumber[i])+"\"");  // 제목 수만큼 버튼 텍스트 설정
 			sb[i].setVisible(true); 
-			if (i==5) break;
+			if (i==7) break;
 		}
 		
 		JButton backbtn = new JButton(new ImageIcon("./img/backbtn.png"));
@@ -115,6 +123,12 @@ public class ittitle extends JFrame {
 				if (e.getActionCommand().equals(ACTION_COMMAND_SIX)){
 					itu.openurl(word, 5, titlenumber);
 				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_SEVEN)){
+					itu.openurl(word, 6, titlenumber);
+				}
+				if (e.getActionCommand().equals(ACTION_COMMAND_EIGHT)){
+					itu.openurl(word, 7, titlenumber);
+				}
 			}
 		};
 	
@@ -130,12 +144,16 @@ public class ittitle extends JFrame {
 		sb[4].addActionListener(listener);
 		sb[5].setActionCommand(ACTION_COMMAND_SIX);
 		sb[5].addActionListener(listener);
+		sb[6].setActionCommand(ACTION_COMMAND_SEVEN);
+		sb[6].addActionListener(listener);
+		sb[7].setActionCommand(ACTION_COMMAND_EIGHT);
+		sb[7].addActionListener(listener);
 		backbtn.setActionCommand(ACTION_COMMAND_BACK);
 		backbtn.addActionListener(listener);
 		a.add(backbtn);
 		this.add(a);
-		this.setSize(700,350);
-		this.setLocation((800-700)/2,(480-350)/2);
+		this.setSize(800,480);
+		//this.setLocation((800-700)/2,(480-350)/2);
 		this.setVisible(true);
 
 	 
