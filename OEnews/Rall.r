@@ -337,6 +337,7 @@ wordurl
  news_content<-gsub("▲","",news_content)
  news_content<-gsub("◆","",news_content)
  news_content<-gsub("◇","",news_content)
+ news_content<-gsub("⊙","",news_content)
  news_content<-gsub("cbs노컷뉴스","",news_content)
  news_content<-gsub("photo@","",news_content)
  news_content<-gsub("제공=","",news_content)
@@ -348,7 +349,7 @@ wordurl
 
  doc <- Corpus(VectorSource(news_content))
  doc <- TermDocumentMatrix(doc,control=list(tokenize=words,removeNumbers=T,removePunctuation=T,wordLengths=c(3,Inf),
-                                            stopwords=c("가장","이어","하고","최","있도록","씨는","그래서","그런","news","밝혔다","이번","그리고","서울경제","세계일보","며","하는","위한","이라고","yna","명이","중","김","이날","명은","뉴스","있습니다","시","오후","오전","했다","명","개","조","강","씨","측","월","전","시간","newsis","또","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
+                                            stopwords=c("연다","가장","이어","하고","최","있도록","씨는","그래서","그런","news","밝혔다","이번","그리고","서울경제","세계일보","며","하는","위한","이라고","yna","명이","중","김","이날","명은","뉴스","있습니다","시","오후","오전","했다","명","개","조","강","씨","측","월","전","시간","newsis","또","그","많","한다","때","있","은","는","이","가","의","위해","것","고","com","있다","및","을","를","수","일","등을","등","▶","통해","바로가기","것으로","년","있는","지난","말했다","이를","한","flash")))
 
  doc <- as.matrix(doc)
 
