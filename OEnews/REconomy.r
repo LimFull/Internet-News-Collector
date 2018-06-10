@@ -91,6 +91,8 @@ words <- function(doc){
 
 # 불필요한 글자 제거
 news_content<-gsub("flash 오류를 우회하기 위한 함수 추가\nfunction _flash_removeCallback()","",news_content)
+news_content<-gsub("\\[한경닷컴 바로가기\\] \\[글방\\] \\[모바일한경 구독신청\\] ⓒ 한국경제 & hankyung\\.com\\, 무단전재 및 재배포 금지","",news_content)
+news_content<-gsub("[A-z0-9]*@[A-z]\\.com","",news_content)
 news_content<-gsub("\t","",news_content)
 news_content<-gsub("\n","",news_content)
 news_content<-gsub("\\{\\}","",news_content)
@@ -105,6 +107,7 @@ news_content<-gsub("기자 [a-z]+","",news_content)
 news_content<-gsub("▶.+","",news_content)
 news_content<-gsub("♥.+","",news_content)
 news_content<-gsub("㎡+","",news_content)
+news_content<-gsub("ⓒ","",news_content)
 
 
 doc <- Corpus(VectorSource(news_content))
